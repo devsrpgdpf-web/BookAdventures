@@ -1,0 +1,4409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prestoros</title>
+  <style>
+    :root {
+      --bg: #120d09;
+      --wood: #2d1f18;
+      --paper: #d7c1a0;
+      --paper-2: #e7d8be;
+      --ink: #34251c;
+      --gold: #d7b57a;
+      --gold-soft: rgba(215, 181, 122, 0.28);
+      --accent: #7b2f1d;
+      --accent-2: #a44628;
+      --shadow: rgba(0,0,0,.45);
+      --menu-bg: rgba(20, 10, 5, .74);
+      --menu-bg-hover: rgba(70, 32, 18, .92);
+      --menu-active: linear-gradient(180deg, rgba(123,47,29,.92), rgba(59,20,13,.92));
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+  overflow-x: hidden;
+  }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top, rgba(150,110,75,.18), transparent 25%),
+        linear-gradient(180deg, #1a130f, #090605 60%, #130d0a);
+      color: #f2e7d0;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(215,181,122,.05), transparent 20%),
+        radial-gradient(circle at 80% 20%, rgba(123,47,29,.05), transparent 20%),
+        radial-gradient(circle at 50% 80%, rgba(215,181,122,.04), transparent 24%);
+      z-index: 0;
+    }
+
+    .top-menu-wrap {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1100px, calc(100% - 18px));
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .top-menu {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      pointer-events: auto;
+      padding: 6px;
+      border-radius: 999px;
+      background: rgba(10, 6, 4, 0.18);
+      backdrop-filter: blur(4px);
+    }
+
+    .top-menu a {
+      position: relative;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--gold-soft);
+      background: var(--menu-bg);
+      color: #f1dfbf;
+      font-size: .95rem;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(0,0,0,.18);
+      transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease, color .25s ease;
+    }
+
+    .top-menu a:hover {
+      background: var(--menu-bg-hover);
+      transform: translateY(-2px);
+      border-color: rgba(215,181,122,.6);
+      box-shadow: 0 14px 24px rgba(0,0,0,.28);
+    }
+
+    .top-menu a.active {
+      background: var(--menu-active);
+      border-color: rgba(215,181,122,.72);
+      color: #fff1d6;
+      box-shadow: 0 10px 26px rgba(0,0,0,.34);
+    }
+
+    .top-menu a::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+      pointer-events: none;
+    }
+
+.hero {
+  height: 100vh;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 110px 28px 40px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* PADRÃO = PC */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("CAPAS/17.png") center center / cover no-repeat;
+  z-index: -2;
+}
+
+/* CELULAR */
+@media (max-width: 768px) {
+  .hero::before {
+    background: url("CAPAS/PHONE WALLPAPER 14.png") center center / cover no-repeat;
+  }
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(8,4,3,.18), rgba(8,4,3,.28)),
+    radial-gradient(circle at center, transparent 30%, rgba(0,0,0,.22) 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+.hero-content {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 980px) {
+  .hero::before {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    transform: none;
+    animation: none;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 110px 18px 28px;
+  }
+}
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(8,4,3,.08), rgba(8,4,3,.10)),
+        radial-gradient(circle at center, transparent 32%, rgba(0,0,0,.14) 100%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.03); }
+      to   { transform: scale(1.09); }
+    }
+
+    .hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 1100px;
+  width: 100%;
+  padding: 24px;
+  animation: fadeUp 1s ease both;
+}
+
+    .eyebrow {
+      letter-spacing: .38em;
+      text-transform: uppercase;
+      font-size: clamp(.72rem, 1.2vw, .95rem);
+      color: #d8c19a;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 10px rgba(0,0,0,.55);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6.3rem);
+      margin: 0 0 12px;
+      letter-spacing: .08em;
+      color: #f1dfbf;
+      text-shadow: 0 4px 20px rgba(0,0,0,.65);
+      line-height: .95;
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 2.1vw, 1.55rem);
+      color: #f0e2c8;
+      line-height: 1.8;
+      max-width: 980px;
+      margin: 0 auto 26px;
+      text-shadow: 0 2px 14px rgba(0,0,0,.72);
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 26px;
+      color: #f6e8cb;
+      border: 1px solid rgba(215,181,122,.55);
+      background: rgba(65, 28, 15, .50);
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,.28);
+      backdrop-filter: blur(4px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
+      transition: left .6s ease;
+    }
+
+    .btn:hover::before {
+      left: 120%;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 28px rgba(0,0,0,.35);
+      background: rgba(90, 36, 18, .70);
+      border-color: rgba(215,181,122,.72);
+    }
+
+    .btn.secondary {
+      background: rgba(20, 12, 8, .40);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .campaign-intro {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 46px 24px 8px;
+      color: #eadbc3;
+      text-align: center;
+      animation: fadeUp .9s ease both;
+    }
+
+    .campaign-intro h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      margin: 0 0 12px;
+      color: #f3e4c8;
+    }
+
+    .campaign-intro p {
+      line-height: 1.9;
+      max-width: 900px;
+      margin: 0 auto 18px;
+      color: #dbc6a5;
+    }
+
+    .book-shell {
+      position: relative;
+      z-index: 1;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 34px 16px 80px;
+    }
+
+    .book {
+      position: relative;
+      background:
+        linear-gradient(90deg, #2c1f18 0%, #4a3427 4%, #6a4c38 6%, #3b2920 8%, #281c16 10%, transparent 10%),
+        linear-gradient(90deg, transparent 90%, #281c16 90%, #3b2920 92%, #6a4c38 94%, #4a3427 96%, #2c1f18 100%);
+      padding: 24px 18px;
+      border-radius: 18px;
+      box-shadow: 0 25px 60px rgba(0,0,0,.45);
+    }
+
+    .spread {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: #cdb28f;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow:
+          inset 0 0 0 2px rgba(65,38,24,.45),
+          inset 0 0 40px rgba(93,55,31,.20),
+          0 18px 40px rgba(0,0,0,.16);
+        margin-bottom: 30px;
+        position: relative;
+        opacity: 1;
+        transform: none;
+      }
+
+    .spread::before {
+      content: "";
+      position: absolute;
+      left: calc(50% - 16px);
+      top: 0;
+      bottom: 0;
+      width: 32px;
+      background: linear-gradient(90deg, rgba(58,35,22,.55), rgba(255,255,255,.08), rgba(58,35,22,.55));
+      z-index: 2;
+      pointer-events: none;
+      opacity: .55;
+    }
+
+    .page {
+      min-height: 820px;
+      padding: 54px 52px 70px;
+      position: relative;
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(245,232,210,.36), rgba(209,182,140,.2)),
+        radial-gradient(circle at top, rgba(255,255,255,.26), transparent 45%),
+        radial-gradient(circle at bottom, rgba(110,70,42,.07), transparent 40%),
+        linear-gradient(180deg, #efddbf, #dcc19c 55%, #d3b28a);
+    }
+
+    .page::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 55%, rgba(76,45,27,.08) 100%);
+      pointer-events: none;
+    }
+
+    .chapter-tag {
+      position: relative;
+      z-index: 1;
+      color: #7f5a39;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-size: .72rem;
+      margin-bottom: 18px;
+    }
+
+    .page h2 {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 18px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #3b261c;
+      line-height: 1.15;
+    }
+
+    .small-title {
+      font-size: clamp(1.5rem, 3vw, 2.1rem) !important;
+    }
+
+    .dropcap p:first-of-type::first-letter {
+      float: left;
+      font-size: 4.3rem;
+      line-height: .9;
+      padding-right: 10px;
+      color: #7f2f1d;
+      font-weight: bold;
+    }
+
+    .page p,
+    .page li {
+      position: relative;
+      z-index: 1;
+      line-height: 1.8;
+      font-size: 1.04rem;
+      margin: 0 0 15px;
+      text-align: justify;
+    }
+
+    .quote {
+      font-style: italic;
+      border-left: 3px solid rgba(123,47,29,.45);
+      padding-left: 14px;
+      margin: 20px 0;
+      color: #4a2e22;
+    }
+
+    .img-frame {
+      position: relative;
+      z-index: 1;
+      border: 2px solid rgba(80,48,29,.45);
+      background: rgba(250,241,224,.35);
+      padding: 12px;
+      box-shadow: 0 10px 30px rgba(70,42,23,.18);
+      margin-bottom: 18px;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .img-frame:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(70,42,23,.22);
+    }
+
+    .img-frame img {
+      width: 100%;
+      display: block;
+      border: 1px solid rgba(80,48,29,.4);
+      object-fit: cover;
+      max-height: 610px;
+    }
+
+    .caption {
+      margin-top: 12px;
+      font-size: .95rem;
+      color: #533628;
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #7a5738;
+      margin: 12px 0 26px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ornament::before,
+    .ornament::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, transparent, rgba(98,63,40,.45), transparent);
+    }
+
+    .session-card {
+      background: rgba(255,247,230,.34);
+      border: 1px solid rgba(93,55,31,.28);
+      padding: 18px;
+      position: relative;
+      z-index: 1;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.20),
+        0 8px 20px rgba(0,0,0,.05);
+      border-radius: 10px;
+    }
+
+    .session-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .placeholder {
+      min-height: 420px;
+      display: grid;
+      place-items: center;
+      border: 2px dashed rgba(80,48,29,.45);
+      color: #6a4733;
+      font-size: 1.05rem;
+      text-align: center;
+      padding: 30px;
+      position: relative;
+      z-index: 1;
+      background:
+        linear-gradient(rgba(255,255,255,.10), rgba(255,255,255,.08)),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(123,47,29,.04),
+          rgba(123,47,29,.04) 12px,
+          rgba(255,255,255,.02) 12px,
+          rgba(255,255,255,.02) 24px
+        );
+      border-radius: 10px;
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+    }
+
+    .placeholder:hover {
+      transform: translateY(-2px);
+      border-color: rgba(123,47,29,.55);
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #d3bea1;
+      font-size: .9rem;
+      margin-top: 18px;
+    }
+
+    .columns {
+      column-count: 2;
+      column-gap: 40px;
+      text-align: justify;
+    }
+
+    .columns p {
+      break-inside: avoid;
+      margin-bottom: 14px;
+    }
+
+    .character-portrait {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .character-portrait .img-frame {
+      width: min(100%, 520px);
+      margin: 0 auto 18px;
+      padding: 18px;
+    }
+
+    .character-portrait .img-frame img {
+      width: 100%;
+      height: auto;
+      max-height: 680px;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      margin: 0 auto;
+      background: rgba(0,0,0,.04);
+    }
+
+   @media (max-width: 980px) {
+  .spread {
+    grid-template-columns: 1fr;
+    border-radius: 10px;
+    margin-bottom: 22px;
+  }
+}
+
+  .spread::before {
+    display: none;
+  }
+
+  .book {
+    padding: 12px 10px;
+    border-radius: 12px;
+    background: #2a1c15;
+  }
+
+  .page {
+    min-height: auto;
+    padding: 28px 18px 34px;
+  }
+
+  .page h2 {
+    font-size: clamp(1.7rem, 6vw, 2.4rem);
+  }
+
+  .chapter-tag {
+    font-size: .68rem;
+    letter-spacing: .16em;
+    margin-bottom: 12px;
+  }
+
+  .page p,
+  .page li {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .img-frame {
+    padding: 10px;
+    margin-bottom: 14px;
+  }
+
+  .img-frame img {
+    max-height: none;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .top-menu-wrap {
+  max-width: 95%;
+  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+  .top-menu {
+    gap: 10px;
+    padding: 12px;
+    justify-content: center;
+    border-radius: 28px;
+    background: rgba(20, 10, 5, 0.58);
+  }
+
+  .top-menu a {
+    font-size: .9rem;
+    padding: 10px 16px;
+    min-width: 120px;
+    text-align: center;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 130px 18px 42px;
+  }
+
+  .hero-content {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: clamp(2.6rem, 14vw, 4.2rem);
+    line-height: .95;
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    max-width: 100%;
+  }
+
+  .buttons {
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+  }
+
+  .campaign-intro {
+    padding: 30px 18px 6px;
+  }
+
+  .columns {
+    column-count: 1;
+    column-gap: 0;
+  }
+
+  .character-portrait {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.character-portrait .img-frame {
+  width: min(100%, 420px);
+  margin: 0 auto 18px;
+  padding: 16px;
+}
+
+.character-portrait .img-frame img {
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  margin: 0 auto;
+  background: rgba(0,0,0,.04);
+}
+
+    @media (max-width: 560px) {
+      h1 {
+        line-height: 1;
+      }
+
+      .subtitle {
+        line-height: 1.65;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-menu-wrap">
+    <nav class="top-menu">
+      <a href="#inicio" class="nav-link active">Capa</a>
+      <a href="#prologo" class="nav-link">Prólogo</a>
+      <a href="#personagens" class="nav-link">Personagens</a>
+      <a href="#cronica" class="nav-link">Crônica</a>
+      <a href="#mapa" class="nav-link">Mapa</a>
+      <a href="#sessao1" class="nav-link">Sessões</a>
+    </nav>
+  </div>
+
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <div class="eyebrow">Arquivo da Guilda dos Errantes</div>
+      <h1>PRESTOROS</h1>
+      <p class="subtitle">
+        Um registro vivo da campanha. Como um tomo em constante escrita, cada sessão se torna
+        capítulo, cada cicatriz vira memória, e cada vitória — ou derrota — ganha o peso de lenda.
+      </p>
+      <div class="buttons">
+        <a class="btn" href="#livro">Abrir o Livro</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="campaign-intro" id="prologo">
+    <h2>Prólogo</h2>
+    <p>
+      Esta página foi construída como um arquivo vivo da campanha de Prestoros. Cada sessão pode se tornar
+      um novo volume, cada personagem pode ganhar seu próprio registro, e cada grande evento pode ser
+      preservado como capítulo dentro das Crônicas da Guilda dos Errantes.
+    </p>
+    <p>
+      Aqui começa o livro. O restante pode ser preenchido, expandido e refinado conforme a campanha avançar.
+    </p>
+  </section>
+
+  <main class="book-shell" id="livro">
+    <div class="book">
+
+      <section class="spread reveal" id="personagens">
+        <article class="page">
+          <div class="chapter-tag">Registro de Personagem</div>
+          <h2>Elyra Vhal’zeth</h2>
+          <div class="ornament">✦</div>
+
+          <div class="session-card">
+            <p><strong>Raça:</strong> Meio-demônio</p>
+            <p><strong>Classe:</strong> Maga</p>
+            <p><strong>Título:</strong> Filha do Desconhecido</p>
+          </div>
+
+          <p class="quote">
+            “Dessa vez, não foi perda de controle. Foi escolha.”
+          </p>
+
+          <div class="dropcap columns">
+            <p>
+              Elyra passou a viver com extremo cuidado depois de descobrir a verdadeira natureza de seu poder.
+              Cada feitiço era calculado, cada decisão tomada com cautela. Ela não evitava o mundo — mas evitava a si mesma.
+              Ainda assim, continuava viajando, observando e aprendendo, tentando provar que era possível manter o controle.
+            </p>
+            <p>Até que o mundo decidiu testá-la.</p>
+            <p>
+              Ela viajava com um pequeno grupo de pessoas comuns: um mercador, dois guardas e uma curandeira.
+              Alguém que, de certa forma, lembrava sua mãe. Talvez por isso Elyra tenha relaxado mais do que deveria.
+            </p>
+            <p>A emboscada veio à noite. Rápida. Precisa. Errada.</p>
+            <p>Não eram bandidos. Eram enviados. E, como antes, eles sabiam quem ela era.</p>
+            <p>
+              Elyra reagiu como sempre faria: magias de contenção, controle de campo, defesa.
+              Tudo funcionando perfeitamente — mas tudo lento demais. Ela percebeu o risco, percebeu a solução…
+              e mesmo assim hesitou.
+            </p>
+            <p>O primeiro guarda caiu. Ela viu e ajustou sua estratégia.</p>
+            <p>O segundo caiu. Ela aumentou o ritmo.</p>
+            <p>A curandeira… Elyra tentou chegar a tempo. Não chegou.</p>
+            <p>
+              No meio do caos, ela parou. Respirou fundo uma única vez.
+              Quando levantou o olhar, não havia desespero, nem raiva.
+              Apenas decisão.
+            </p>
+            <p>— Certo.</p>
+            <p>Foi a única palavra que disse.</p>
+            <p>Dessa vez, não foi perda de controle. Foi escolha.</p>
+            <p>
+              Sua presença mudou de forma sutil, mas absoluta.
+              O ar ao redor pareceu se alinhar, como se tudo reconhecesse uma nova ordem.
+              Símbolos surgiram sob seus pés — perfeitos, antigos, naturais demais para terem sido aprendidos.
+            </p>
+            <p>Ela não gritou. Não fez esforço. Apenas abriu espaço.</p>
+            <p>
+              A criatura que respondeu não veio em caos, mas em obediência.
+              Elyra não correu. Ela caminhou.
+              Cada movimento preciso, cada ação necessária, sem desperdício, sem hesitação, sem piedade.
+            </p>
+            <p>Os inimigos caíram um a um.</p>
+            <p>E mesmo quando a luta já estava decidida, Elyra terminou.</p>
+            <p>
+              Não por crueldade — mas porque, naquele estado, deixar algo inacabado simplesmente não fazia sentido.
+            </p>
+            <p>Quando tudo acabou, o silêncio voltou.</p>
+            <p>
+              Elyra permaneceu de pé por alguns instantes.
+              Respiração controlada. Postura intacta.
+              Como se nada tivesse saído do lugar.
+            </p>
+            <p>Então ela olhou para o lado. E viu a curandeira.</p>
+            <p>
+              Caminhou até ela devagar, ajoelhou-se e colocou a mão sobre seu corpo.
+              Tentou usar magia. Sabia que não funcionaria. Tentou mesmo assim.
+            </p>
+            <p>Nada. Nenhuma resposta. Nenhuma chance.</p>
+            <p>
+              Seu rosto não mudou, mas seus dedos apertaram levemente o tecido da roupa da mulher —
+              um detalhe mínimo, quase imperceptível.
+            </p>
+            <p>Não foi desespero que veio.</p>
+            <p>Foi um pensamento claro, preciso:</p>
+            <p class="quote">“Se eu tivesse feito isso antes… ela estaria viva.”</p>
+            <p>E então outro, ainda mais frio:</p>
+            <p class="quote">“Então hesitar… foi o erro.”</p>
+            <p>Naquela noite, Elyra não sonhou.</p>
+            <p>A presença veio. Mais próxima. Mais definida.</p>
+            <p>— Você aprendeu.</p>
+            <p>Ela não respondeu. Mas também não negou.</p>
+            <p>
+              Na manhã seguinte, Elyra organizou os corpos. Com cuidado. Com respeito. Sem pressa.
+              Enterrou a curandeira por último e permaneceu ali por alguns instantes a mais.
+              Não chorou. Mas também não saiu imediatamente.
+            </p>
+            <p>Depois disso, partiu.</p>
+            <p>
+              Foi nesse estado — não quebrada, mas transformada — que Elyra ouviu falar da Guilda dos Errantes.
+              Um grupo formado por pessoas que não se encaixavam em lugar algum, que viviam lidando com decisões difíceis,
+              onde o estranho era comum e ninguém fingia que existiam soluções perfeitas.
+            </p>
+            <p>E dessa vez, ela não foi por curiosidade. Foi por lógica.</p>
+            <p>
+              Se o mundo exige decisões difíceis, ela precisava estar em um lugar onde essas decisões são parte do dia a dia.
+              Onde alguém como ela não seria uma anomalia.
+            </p>
+            <p>
+              Elyra chegou à guilda como sempre faz: controlada, educada, funcional.
+              Uma maga comum aos olhos de quem não sabe o que procurar.
+              Passou pelos testes sem dificuldade, utilizando apenas magia arcana tradicional,
+              mantendo sua verdadeira natureza contida.
+            </p>
+          </div>
+        </article>
+
+        <article class="page character-portrait">
+          <div class="chapter-tag">Retrato Arcano</div>
+          <h2>Elyra a Coroada</h2>
+          <div class="img-frame">
+            <img src="PLAYERS/elyra.jpeg" alt="Elyra Vhal’zeth" />
+            <div class="caption">
+              Elyra Vhal’zeth, meio-demônio e maga. Seu retrato revela o contraste entre controle e ameaça:
+              o grimório em mãos, o fogo rubro obediente e o olhar de alguém que já compreendeu que o verdadeiro
+              perigo não está apenas no inimigo à frente, mas na escolha exata do momento em que deve deixar de hesitar.
+            </div>
+          </div>
+          <p class="quote">
+            “Uma maga comum aos olhos de quem não sabe o que procurar.”
+          </p>
+        </article>
+      </section>
+
+      <section class="spread reveal">
+        <article class="page">
+          <div class="chapter-tag">Registro de Personagem</div>
+          <h2>Nyx Bloodshade</h2>
+          <div class="ornament">✦</div>
+
+          <div class="session-card">
+            <p><strong>Raça:</strong> Hemodor</p>
+            <p><strong>Classe:</strong> Ladino</p>
+            <p><strong>Título:</strong> O Observador Carmesim</p>
+          </div>
+
+          <p class="quote">
+            “Ele não mata por prazer… ele observa o que a morte revela.”
+          </p>
+
+          <div class="dropcap columns">
+            <p>
+              Nyx nasceu em Sanguinaris, o Reino do Sangue — um semi-plano vivo ligado ao Coração Carmesim.
+              Desde o início, ele foi diferente dos outros de sua espécie.
+            </p>
+            <p>
+              Enquanto os Hemodores viam o sangue como fonte de poder, tradição e domínio,
+              Nyx o enxergava como algo além: uma linguagem, uma memória viva, um código que podia ser estudado.
+            </p>
+            <p>
+              Enquanto os outros treinavam para o combate e seguiam rituais antigos,
+              Nyx se isolava. Em silêncio, coletava amostras, analisava diferenças,
+              testava reações entre sangues distintos.
+            </p>
+            <p>Aquilo que fazia era visto como estranho — até perturbador. Mas Nyx não buscava controle. Ele buscava compreensão.</p>
+            <p>
+              Foi nas regiões instáveis de Sanguinaris que sua curiosidade o levou longe demais.
+              Lá, ele encontrou algo que não deveria existir naquele plano.
+            </p>
+            <p>Uma criatura… de outro lugar.</p>
+            <p>
+              Ao coletar seu sangue, testemunhou o impossível:
+              o fluido reagiu ao dele. Adaptou-se. Tentou evoluir.
+            </p>
+            <p>Fascinado, Nyx avançou no experimento. Até perder o controle. O sangue invadiu seu corpo.</p>
+            <p>A partir daquele momento, Nyx mudou.</p>
+            <p>
+              Sua manipulação tornou-se mais precisa, mais refinada.
+              Ele passou a moldar o sangue como lâminas, extensões vivas de si mesmo.
+            </p>
+            <p>Mas o poder veio com um preço.</p>
+            <p>
+              Às vezes, seu corpo reagia sozinho.
+              Como se estivesse aprendendo… sem ele.
+            </p>
+            <p>Ecos começaram a surgir.</p>
+            <p>Fragmentos de outras criaturas. Impulsos que não eram seus.</p>
+            <p>Algo dentro dele estava mudando. Tornando-se algo novo.</p>
+            <p>Nyx então fez uma escolha. Ele deixou Sanguinaris.</p>
+            <p>Não apenas por curiosidade. Mas por necessidade.</p>
+            <p>
+              O Reino do Sangue já não era suficiente.
+              Se quisesse entender o que estava acontecendo com ele,
+              precisaria explorar outros tipos de sangue.
+              Outras criaturas. Outras formas de vida.
+            </p>
+            <p>Foi assim que ele se tornou um ladino.</p>
+            <p>Não por ouro. Não por fama. Mas para caçar sozinho.</p>
+            <p>Nyx evita confrontos abertos. Prefere silêncio. Emboscadas. Alvos isolados.</p>
+            <p>Cada movimento é calculado. Cada corte tem propósito.</p>
+            <p>Ele não busca apenas matar. Ele busca entender.</p>
+            <p>Ainda assim, carrega um receio constante: ser descoberto.</p>
+            <p>Ele sabe como seria visto.</p>
+            <p class="quote">Um monstro usando vidas como ferramentas.</p>
+            <p>E, no fundo… ele não tem certeza de que essa visão está errada.</p>
+            <p>Por isso mantém distância. Fala pouco. Evita laços.</p>
+            <p>Porque acredita que, se um dia o conhecerem de verdade… não hesitarão em tentar matá-lo.</p>
+            <p>Dentro dele existe um conflito constante.</p>
+            <p>O pesquisador… e algo mais.</p>
+            <p>Algo que cresce em silêncio.</p>
+            <p>Nyx não se vê como mal. Mas também sabe… que não é normal.</p>
+          </div>
+        </article>
+
+        <article class="page character-portrait">
+          <div class="chapter-tag">Retrato Carmesim</div>
+          <h2>Nyx e o Sangue Vivo</h2>
+          <div class="img-frame">
+            <img src="PLAYERS/nyx.png" alt="Nyx Bloodshade" />
+            <div class="caption">
+              Nyx Bloodshade, Hemodor e ladino. Sua relação com o sangue vai além do poder — ele o trata como linguagem,
+              memória e ferramenta. As lâminas que molda não são apenas armas, mas extensões de um estudo que nunca termina.
+            </div>
+          </div>
+          <p class="quote">
+            “O sangue não mente. Ele apenas revela.”
+          </p>
+        </article>
+      </section>
+
+      <section class="spread reveal">
+        <article class="page">
+          <div class="chapter-tag">Registro de Personagem</div>
+          <h2>Gondyr Gonner</h2>
+          <div class="ornament">✦</div>
+
+          <div class="session-card">
+            <p><strong>Raça:</strong> Anão</p>
+            <p><strong>Classe:</strong> Bárbaro</p>
+            <p><strong>Título:</strong> O Último</p>
+          </div>
+
+          <p class="quote">
+            “Leve com você a única coisa que restou da nossa família.”
+          </p>
+
+          <div class="dropcap columns">
+            <p>
+              Gondyr nasceu em uma família tradicional de anões. Seu destino, desde cedo,
+              parecia já ter sido decidido: trabalhar nas forjas, herdar a ferraria do pai
+              e manter viva a tradição da família.
+            </p>
+            <p>Mas Gondyr nunca pertenceu àquele fogo calmo.</p>
+            <p>
+              Enquanto o ferro era moldado com paciência, ele ardia por outra coisa.
+              Brigas. Confrontos. O caos de uma boa batalha.
+            </p>
+            <p>
+              Diferente de seu irmão mais novo, Sirdy, que sonhava em continuar os negócios
+              do pai e via beleza no trabalho da forja, Gondyr sempre foi o problema da família.
+              Não por maldade, mas por imprudência. Ele atraía confusão como se tivesse nascido para isso.
+            </p>
+            <p>Um dia, Sirdy finalmente começou a realizar seu sonho.</p>
+            <p>
+              Diante do pai orgulhoso, ele trabalhava em seu primeiro machado.
+              A peça estava ficando perfeita. Um símbolo do início de sua própria história.
+            </p>
+            <p>Mas foi exatamente nesse dia que Gondyr retornou à vila.</p>
+            <p>E, com ele, voltou algo pior que uma simples briga.</p>
+            <p>
+              Dessa vez, seus companheiros não poderiam resolver.
+              Uma espécie desconhecida, atiçada a matá-lo, vinha em seu encalço.
+              Gondyr havia espancado o filho de um de seus maiores líderes.
+            </p>
+            <p>
+              Em desespero, ele correu para a própria vila esperando ajuda.
+              Esperando proteção. Esperando tempo.
+            </p>
+            <p>Mas levou a morte consigo.</p>
+            <p>O massacre foi rápido.</p>
+            <p>
+              Sua vila caiu. Sua família caiu.
+              Os rostos que sempre estiveram ali desapareceram no sangue e no caos.
+            </p>
+            <p>Gondyr não conseguiu salvá-los.</p>
+            <p>Tudo o que pôde fazer… foi fugir.</p>
+            <p>
+              No meio do horror, viu Sirdy morrer em seus braços,
+              com o sonho recém realizado se apagando junto dele.
+            </p>
+            <p>
+              Em seus últimos instantes, o irmão não o amaldiçoou.
+              Não o culpou.
+            </p>
+            <p>Apenas entregou a Gondyr sua primeira — e última — criação.</p>
+            <p>O machado.</p>
+            <p>
+              E pediu que ele levasse consigo a única coisa que havia restado da história da família.
+            </p>
+            <p>
+              Gondyr nunca odiou o irmão por aquilo.
+              Sirdy só queria viver o próprio sonho.
+              Poderia ter acontecido com qualquer um.
+            </p>
+            <p>
+              Com o próprio sangue e os últimos segundos de vida,
+              Sirdy desenhou um rosto no machado, para que Gondyr jamais esquecesse aquele dia.
+            </p>
+            <p>Desde então, Gondyr carrega não apenas uma arma, mas uma memória viva.</p>
+            <p>Cada golpe dado com aquele machado é também um eco. Um peso. Um lembrete.</p>
+            <p>
+              Ele segue em frente como alguém marcado pela perda,
+              carregando culpa demais para descansar
+              e raiva demais para parar.
+            </p>
+            <p>Mas no fundo, o que o move não é apenas vingança.</p>
+            <p>É o medo de esquecer.</p>
+            <p>
+              Porque enquanto lembrar do rosto desenhado em sangue,
+              enquanto lembrar do irmão e da vila,
+              sua família ainda não terá desaparecido por completo.
+            </p>
+            <p>
+              E talvez seja por isso que Gondyr continua lutando:
+              não só para sobreviver,
+              mas para garantir que os mortos permaneçam com ele,
+              mesmo quando tudo ao redor já se foi.
+            </p>
+          </div>
+        </article>
+
+        <article class="page character-portrait">
+          <div class="chapter-tag">Visão Ancestral</div>
+          <h2>Gondyr e os Ecos do Passado</h2>
+          <div class="img-frame">
+            <img src="PLAYERS/gondyr.png" alt="Gondyr Gonner" />
+            <div class="caption">
+              Gondyr Gonner, anão e bárbaro. Em meio ao gelo antigo sob a aurora boreal, ele contempla
+              a visão impossível de sua antiga vila congelada no tempo. Ali, entre neve e silêncio,
+              os ancestrais dos que morreram — sua família, seu povo e seu irmão Sirdy — retornam não para acusá-lo,
+              mas para lembrá-lo de que ele não caminha sozinho.
+            </div>
+          </div>
+          <p class="quote">
+            “Sempre estaremos com você, irmão.”
+          </p>
+        </article>
+      </section>
+
+      <section class="spread reveal">
+        <article class="page">
+          <div class="chapter-tag">Registro de Personagem</div>
+          <h2>Akeley Pickman</h2>
+          <div class="ornament">✦</div>
+
+          <div class="session-card">
+            <p><strong>Raça:</strong> Shifter</p>
+            <p><strong>Classe:</strong> Bruxo</p>
+            <p><strong>Título:</strong> O Colecionador</p>
+          </div>
+
+          <p class="quote">
+            “O medo do desconhecido não deve ser evitado… deve ser usado.”
+          </p>
+
+          <div class="dropcap columns">
+            <p>
+              Akeley Pickman nunca pertenceu às cidades do Cinturão de Pedra de Thal’Zar.
+              O calor implacável durante o dia e o frio brutal das noites eram apenas parte do problema.
+            </p>
+            <p>O verdadeiro motivo… era que ele nunca pertenceu a lugar algum.</p>
+            <p>
+              Rejeitado e deslocado, encontrou propósito nas bordas do deserto,
+              onde poucos se arriscam a ir.
+            </p>
+            <p>
+              Lá, sobreviveu explorando templos soterrados pelo Mar de Areia Escarlate,
+              bibliotecas enterradas e estruturas esquecidas.
+            </p>
+            <p>Ruínas de civilizações antigas… que Thal’Zar prefere manter enterradas.</p>
+            <p>Mais do que um explorador, Akeley se tornou um caçador.</p>
+            <p>Não apenas de relíquias… mas de conhecimento proibido.</p>
+            <p>
+              Sempre com seu chicote à cintura, enfrentou criaturas,
+              armadilhas e coisas que nem sequer deveriam existir.
+            </p>
+            <p>Até que ouviu sobre uma propriedade nas fronteiras de Zar-Khalith.</p>
+            <p>Um lugar abandonado.</p>
+            <p>Um senhor que enlouqueceu ao escavar abaixo da própria casa.</p>
+            <p>Para Akeley, parecia apenas mais uma ruína. Não era.</p>
+            <p>A masmorra abaixo da propriedade era diferente.</p>
+            <p>Escura demais. Pesada demais.</p>
+            <p>Como se a própria escuridão tivesse peso.</p>
+            <p>Um lugar onde a sanidade não era garantida.</p>
+            <p>E lá… ele encontrou algo que não deveria existir.</p>
+            <p>Uma estrutura onde espaço e forma se distorciam.</p>
+            <p>Um fragmento de algo maior. Um deus.</p>
+            <p>Não um deus conhecido. Algo além da compreensão.</p>
+            <p>Por um instante, ele viu.</p>
+            <p>E quase perdeu tudo.</p>
+            <p>Mas resistiu. Não saiu ileso.</p>
+            <p>Desde aquele momento, ele nunca mais esteve sozinho.</p>
+            <p>Às vezes… ele sente algo. Mesmo quando não há ninguém.</p>
+            <p>E seu chicote mudou.</p>
+            <p>O instrumento se tornou algo estranho. Levemente carnoso. Pulsante. Vivo.</p>
+            <p>Akeley não sabe o que ele se tornou. Mas sabe… que não é mais apenas uma arma.</p>
+            <p>Foi ali que ele entendeu.</p>
+            <p>O medo mais antigo não é o inimigo. É uma ferramenta.</p>
+            <p>Quando saiu daquele lugar, já não era apenas um caçador de relíquias. Era algo mais. Algo marcado.</p>
+            <p>Sem rumo, encontrou a Guilda dos Errantes. Um lugar onde pessoas quebradas ainda têm utilidade.</p>
+            <p>Ele não entrou por honra. Nem por lealdade. Mas por necessidade.</p>
+            <p>Akeley permanece por um motivo simples:</p>
+            <p>Ele quer entender o que viu.</p>
+            <p>E, se possível… encontrar novamente aquilo que quase destruiu sua mente.</p>
+            <p>Não para fugir. Mas para dominar.</p>
+            <p>Mas o deserto não esquece.</p>
+            <p>E algo… nas profundezas… certamente percebeu sua existência.</p>
+          </div>
+        </article>
+
+        <article class="page character-portrait">
+          <div class="chapter-tag">Marca do Abismo</div>
+          <h2>Pickman e o Chamado</h2>
+          <div class="img-frame">
+            <img src="PLAYERS/Pickman.png" alt="Akeley Pickman" />
+            <div class="caption">
+              Akeley Pickman, shifter e bruxo. Marcado por um encontro com algo além da compreensão,
+              ele carrega consigo não apenas conhecimento proibido, mas um vínculo silencioso com uma entidade
+              que observa… mesmo quando não deveria existir presença alguma.
+            </div>
+          </div>
+          <p class="quote">
+            “O deserto não esquece. E o abismo… observa.”
+          </p>
+        </article>
+      </section>
+
+       <section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Registro de Personagem</div>
+    <h2>Kael Varyn</h2>
+    <div class="ornament">✦</div>
+
+    <div class="session-card">
+      <p><strong>Classe:</strong> Ladino</p>
+      <p><strong>Raça:</strong> Dhampir</p>
+      <p><strong>Título:</strong> O Ceifador Incompleto</p>
+    </div>
+
+    <p class="quote">
+      “A foice não era apenas uma arma. Era parte dele.”
+    </p>
+
+    <div class="dropcap columns">
+      <p>
+        Nascido de um erro que jamais deveria existir, Kael veio ao mundo na calada da noite,
+        fruto da união proibida entre uma mulher mortal e um vampiro que nunca permaneceu
+        para ver o que havia criado.
+      </p>
+
+      <p>
+        Cresceu à margem.
+      </p>
+
+      <p>
+        Rejeitado pelos vivos por sua aparência inquietante
+        e caçado pelos mortos por não ser puro o bastante.
+      </p>
+
+      <p>
+        Ainda jovem, percebeu que sua fome não era apenas por sangue.
+      </p>
+
+      <p>
+        Havia algo mais profundo.
+      </p>
+
+      <p>
+        Ele conseguia sentir a vida se esvaindo.
+        Como se cada ser carregasse uma chama prestes a se apagar
+        — e ele fosse atraído por isso.
+      </p>
+
+      <p>
+        Sem rumo, acabou sendo encontrado por uma ordem esquecida,
+        um culto silencioso que venerava o equilíbrio entre vida e morte.
+      </p>
+
+      <p>
+        Eles não o acolheram por compaixão.
+      </p>
+
+      <p>
+        O acolheram por utilidade.
+      </p>
+
+      <p>
+        Ali, Kael foi treinado nas artes da furtividade,
+        da lâmina e da colheita.
+      </p>
+
+      <p>
+        Foi naquele lugar que recebeu sua foice.
+      </p>
+
+      <p>
+        Não como simples arma,
+        mas como símbolo.
+      </p>
+
+      <p>
+        Um instrumento de propósito,
+        ligado à essência daquilo que ele se tornaria.
+      </p>
+
+      <p>
+        Por um tempo, pareceu que finalmente havia encontrado direção.
+      </p>
+
+      <p>
+        Mas algo nunca se encaixou.
+      </p>
+
+      <p>
+        Com o passar dos anos,
+        Kael percebeu que não era um servo da morte,
+        nem um verdadeiro guardião do equilíbrio.
+      </p>
+
+      <p>
+        Era apenas mais uma ferramenta sendo usada.
+      </p>
+
+      <p>
+        E, pela primeira vez,
+        escolheu por si mesmo.
+      </p>
+
+      <p>
+        Na noite em que abandonou a ordem,
+        deixou para trás apenas silêncio
+        — e corpos.
+      </p>
+
+      <p>
+        Mas a fuga teve um preço.
+      </p>
+
+      <p>
+        A foice, aquela que canalizava seu poder
+        e o conectava à própria morte,
+        foi perdida.
+      </p>
+
+      <p>
+        Alguns dizem que ficou para trás no massacre.
+      </p>
+
+      <p>
+        Outros acreditam que a ordem a recuperou.
+      </p>
+
+      <p>
+        Há ainda rumores de que a arma simplesmente desapareceu,
+        como se tivesse vontade própria.
+      </p>
+
+      <p>
+        Desde então, Kael não é mais o mesmo.
+      </p>
+
+      <p>
+        Sem a foice,
+        sua conexão com a morte tornou-se instável,
+        imprevisível.
+      </p>
+
+      <p>
+        Seus poderes falham.
+        Seus instintos entram em conflito.
+      </p>
+
+      <p>
+        E a fome dentro dele parece mais intensa.
+        Mais descontrolada.
+      </p>
+
+      <p>
+        Agora, ele vaga sozinho.
+      </p>
+
+      <p>
+        Não apenas em busca de propósito,
+        mas daquilo que perdeu.
+      </p>
+
+      <p>
+        Porque, no fundo,
+        ele sabe de uma verdade que ninguém mais compreende:
+      </p>
+
+      <p class="quote">
+        A foice não era apenas uma arma.
+      </p>
+
+      <p class="quote">
+        Era parte dele.
+      </p>
+
+      <p>
+        E enquanto não a recuperar,
+        nunca estará completo.
+      </p>
+    </div>
+  </article>
+
+  <article class="page character-portrait">
+    <div class="chapter-tag">Marca da Colheita</div>
+    <h2>Kael e a Ausência da Foice</h2>
+
+    <div class="img-frame">
+      <img src="PLAYERS/kael.jpeg" alt="Kael Varyn" />
+      <div class="caption">
+        Kael Varyn, ladino marcado pela morte e pela ausência. Nascido entre dois mundos e treinado por uma ordem
+        que venerava o equilíbrio entre vida e morte, ele agora caminha incompleto, privado da foice que um dia
+        foi extensão de sua própria essência.
+      </div>
+    </div>
+    <p class="quote">
+      “Sem ela, a morte ainda o escuta — mas já não o obedece.”
+    </p>
+  </article>
+</section>
+    <section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Registro de Personagem</div>
+    <h2>Vladric Valek</h2>
+    <div class="ornament">✦</div>
+
+    <div class="session-card">
+      <p><strong>Classe:</strong> Feiticeiro</p>
+      <p><strong>Raça:</strong> Haemophilus</p>
+      <p><strong>Título:</strong> O Hospedeiro de Sanguinaris</p>
+    </div>
+
+    <p class="quote">
+      “Ele não nasceu. Foi criado para estar presente quando o selo começasse a falhar.”
+    </p>
+
+    <div class="dropcap columns">
+      <p>
+        Vladric Valek não nasceu.
+      </p>
+
+      <p>
+        Ele foi moldado em Sanguinaris, um plano vivo onde o sangue possui consciência e vontade própria.
+      </p>
+
+      <p>
+        Criado nas torres de carne pulsante, sua existência não foi acaso,
+        nem bênção, nem milagre.
+      </p>
+
+      <p>
+        Foi resposta.
+      </p>
+
+      <p>
+        Desde sua formação, Vladric carregava visões de um outro mundo.
+      </p>
+
+      <p>
+        Terras congeladas.
+        Ruínas antigas.
+        Uma fortaleza esquecida.
+      </p>
+
+      <p>
+        E, dentro dela,
+        uma presença antiga e terrível permanecendo selada.
+      </p>
+
+      <p>
+        Algo tão perigoso que nem mesmo Sanguinaris ousava enfrentar diretamente.
+      </p>
+
+      <p>
+        A entidade responsável por sua criação,
+        uma consciência primordial sem nome,
+        não lhe ofereceu escolhas.
+      </p>
+
+      <p>
+        Apenas um propósito.
+      </p>
+
+      <p>
+        Estar presente quando o selo daquela ameaça começasse a falhar.
+      </p>
+
+      <p>
+        Incapaz de atravessar planos por conta própria,
+        essa consciência moldou Vladric como agente vivo.
+      </p>
+
+      <p>
+        Alguém capaz de existir em outro mundo
+        e agir quando chegasse o momento.
+      </p>
+
+      <p>
+        Então, sem aviso,
+        Vladric foi expelido para Prestoros através de um portal.
+      </p>
+
+      <p>
+        Um mundo onde o sangue era inerte.
+        Silencioso.
+      </p>
+
+      <p>
+        Diferente de tudo o que conhecia.
+      </p>
+
+      <p>
+        Ainda assim, ele não chegou vazio.
+      </p>
+
+      <p>
+        Sanguinaris vive dentro dele,
+        correndo em suas veias,
+        alimentando seus poderes.
+      </p>
+
+      <p>
+        Sua magia não é aprendida.
+      </p>
+
+      <p>
+        É liberada.
+      </p>
+
+      <p>
+        E cada uso cobra um preço real.
+      </p>
+
+      <p>
+        Dor.
+        Desgaste.
+        E um impulso crescente que o empurra além dos próprios limites.
+      </p>
+
+      <p>
+        Vladric não perde o controle completamente.
+      </p>
+
+      <p>
+        Mas sente, de forma constante,
+        algo dentro de si querendo ocupar mais espaço.
+      </p>
+
+      <p>
+        Como se o poder que carrega
+        jamais pretendesse permanecer contido.
+      </p>
+
+      <p>
+        Com o passar do tempo,
+        suas visões se intensificaram.
+      </p>
+
+      <p>
+        Até culminarem em um evento que mudou tudo.
+      </p>
+
+      <p>
+        Em um momento de ruptura,
+        Vladric manifestou em Prestoros um selo desconhecido.
+      </p>
+
+      <p>
+        Um símbolo que não deveria existir naquele mundo.
+      </p>
+
+      <p>
+        A Guilda dos Errantes reconheceu que aquilo estava ligado
+        a forças antigas e a outros planos.
+      </p>
+
+      <p>
+        Possivelmente ao mesmo poder responsável por selar a entidade do norte,
+        nas ruínas esquecidas além das terras congeladas.
+      </p>
+
+      <p>
+        Agora, Vladric se junta à Guilda não apenas em busca de respostas,
+        nem apenas por desejar um caminho de volta.
+      </p>
+
+      <p>
+        Ele permanece porque compreende,
+        ainda que parcialmente,
+        o verdadeiro papel que lhe foi imposto.
+      </p>
+
+      <p>
+        Não foi criado para retornar.
+      </p>
+
+      <p>
+        Foi criado para enfrentar aquilo que ameaça escapar.
+      </p>
+
+      <p>
+        Porque, se essa entidade se libertar,
+        não apenas Prestoros estará em risco.
+      </p>
+
+      <p>
+        O próprio Sanguinaris poderá ser consumido.
+        Ou dominado.
+      </p>
+
+      <p>
+        No fim, Vladric carrega uma verdade inquietante.
+      </p>
+
+      <p>
+        Ele não pertence a este mundo.
+      </p>
+
+      <p>
+        Mas também não pode abandoná-lo.
+      </p>
+
+      <p>
+        Porque talvez seu destino nunca tenha sido voltar para casa.
+      </p>
+
+      <p>
+        E sim caminhar diretamente
+        para aquilo que foi criado para destruir.
+      </p>
+    </div>
+  </article>
+
+  <article class="page character-portrait">
+    <div class="chapter-tag">Sangue Moldado</div>
+    <h2>Vladric e o Selo</h2>
+
+    <div class="img-frame">
+      <img src="PLAYERS/vladric.jpeg" alt="Vladric Valek" />
+      <div class="caption">
+        Vladric Valek, feiticeiro e criatura moldada em Sanguinaris. Traz em si o sangue vivo de um plano consciente,
+        bem como a marca de um propósito que não escolheu: permanecer em Prestoros até o momento em que o selo do norte
+        começar a falhar.
+      </div>
+    </div>
+    <p class="quote">
+      “Talvez ele nunca tenha sido feito para voltar. Apenas para chegar ao fim.”
+    </p>
+  </article>
+</section>
+    <section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Registro de Personagem</div>
+    <h2>Eärendil Starwhisper</h2>
+    <div class="ornament">✦</div>
+
+    <div class="session-card">
+      <p><strong>Raça:</strong> Meio-Elfo</p>
+      <p><strong>Classe:</strong> Guerreiro</p>
+      <p><strong>Título:</strong> O Herdeiro das Crônicas</p>
+    </div>
+
+    <p class="quote">
+      “O passado não é memória. É aviso.”
+    </p>
+
+    <div class="dropcap columns">
+      <p>
+        Eärendil nasceu em Sylvara, um dos reinos élficos mais antigos de Prestoros.
+      </p>
+
+      <p>
+        Uma terra onde o tempo corre diferente.
+        Onde o conhecimento não é acumulado —
+        é preservado.
+      </p>
+
+      <p>
+        Ele pertence à Casa Starwhisper,
+        uma linhagem dedicada não ao poder,
+        mas à memória do mundo.
+      </p>
+
+      <p>
+        Sua família nunca governou.
+      </p>
+
+      <p>
+        Mas era ela quem registrava a história daqueles que governavam.
+      </p>
+
+      <p>
+        Desde cedo, Eärendil foi moldado pelo estudo.
+      </p>
+
+      <p>
+        História dos reinos.
+        Línguas antigas.
+        Teoria arcana.
+      </p>
+
+      <p>
+        Mas, acima de tudo,
+        eventos que jamais deveriam ser esquecidos.
+      </p>
+
+      <p>
+        Entre esses registros,
+        um nome ecoava com mais peso que todos os outros:
+      </p>
+
+      <p>
+        O Inverno Longo.
+      </p>
+
+      <p>
+        A guerra contra os Espectros da Lua.
+      </p>
+
+      <p>
+        E a ascensão da Companhia da Aurora.
+      </p>
+
+      <p>
+        Para muitos, histórias.
+      </p>
+
+      <p>
+        Para Sylvara, fatos.
+      </p>
+
+      <p>
+        Eärendil cresceu entendendo uma verdade simples:
+      </p>
+
+      <p>
+        O mundo já esteve à beira do fim.
+      </p>
+
+      <p>
+        E pode voltar a esse estado.
+      </p>
+
+      <p>
+        Diferente de sua linhagem,
+        ele não se contentou em apenas estudar.
+      </p>
+
+      <p>
+        Decidiu agir.
+      </p>
+
+      <p>
+        Enquanto outros registravam o passado,
+        ele se preparava para o futuro.
+      </p>
+
+      <p>
+        Eärendil passou a treinar com armas élficas,
+        combinando técnica marcial com fundamentos arcanos.
+      </p>
+
+      <p>
+        Não era um mago.
+      </p>
+
+      <p>
+        Nem apenas um guerreiro.
+      </p>
+
+      <p>
+        Era algo entre os dois.
+      </p>
+
+      <p>
+        Disciplina.
+        Precisão.
+        Controle.
+      </p>
+
+      <p>
+        Cada movimento pensado.
+        Cada golpe calculado.
+      </p>
+
+      <p>
+        Para ele, conhecimento sem aplicação era desperdício.
+      </p>
+
+      <p>
+        E ignorar a história…
+        era repetir seus erros.
+      </p>
+
+      <p>
+        Ao completar sua formação,
+        Eärendil fez o que muitos de sua casa fazem.
+      </p>
+
+      <p>
+        Partiu.
+      </p>
+
+      <p>
+        Não por fuga.
+      </p>
+
+      <p>
+        Mas por propósito.
+      </p>
+
+      <p>
+        Viajou por Prestoros,
+        observando outros reinos,
+        outras culturas,
+        outras formas de magia.
+      </p>
+
+      <p>
+        Cada lugar,
+        uma peça do todo.
+      </p>
+
+      <p>
+        Cada encontro,
+        uma nova perspectiva.
+      </p>
+
+      <p>
+        Mas algo começou a incomodá-lo.
+      </p>
+
+      <p>
+        Pequenos sinais.
+      </p>
+
+      <p>
+        Fragmentos de histórias antigas se repetindo.
+      </p>
+
+      <p>
+        Ecos de algo que ele já havia estudado.
+      </p>
+
+      <p>
+        Como se o passado estivesse…
+        tentando acontecer novamente.
+      </p>
+
+      <p>
+        Foi nesse momento que Eärendil entendeu.
+      </p>
+
+      <p>
+        Ele não estava viajando apenas para aprender.
+      </p>
+
+      <p>
+        Estava sendo preparado.
+      </p>
+
+      <p>
+        E quando ouviu falar da Guilda dos Errantes,
+        não hesitou.
+      </p>
+
+      <p>
+        Um grupo formado por aqueles que não pertencem a lugar algum.
+      </p>
+
+      <p>
+        Exatamente o tipo de força que,
+        historicamente,
+        muda o rumo do mundo.
+      </p>
+
+      <p>
+        Eärendil não entrou por acaso.
+      </p>
+
+      <p>
+        Ele entrou porque reconheceu o padrão.
+      </p>
+
+      <p class="quote">
+        E padrões, para ele,
+        nunca são coincidência.
+      </p>
+    </div>
+  </article>
+
+  <article class="page character-portrait">
+    <div class="chapter-tag">Crônicas Vivas</div>
+    <h2>Eärendil e o Peso da História</h2>
+
+    <div class="img-frame">
+      <img src="PLAYERS/earendill.jpeg" alt="Eärendil Starwhisper" />
+      <div class="caption">
+        Eärendil Starwhisper, meio-elfo e guerreiro de Sylvara. Herdeiro de uma linhagem dedicada ao conhecimento,
+        ele carrega consigo não apenas técnica e disciplina, mas o peso de eras registradas e erros que não podem
+        se repetir.
+      </div>
+    </div>
+    <p class="quote">
+      “Se o mundo já quase acabou uma vez… alguém precisa lembrar por quê.”
+    </p>
+  </article>
+</section>
+      <section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Registro de Personagem</div>
+    <h2>Brucisphildy</h2>
+    <div class="ornament">✦</div>
+
+    <div class="session-card">
+      <p><strong>Raça:</strong> Meio-Orc</p>
+      <p><strong>Classe:</strong> Ladino</p>
+      <p><strong>Título:</strong> O Caçador de Tesouros</p>
+    </div>
+
+    <p class="quote">
+      “Ele nunca soube de onde veio. Mas sempre soube que algo o chama.”
+    </p>
+
+    <div class="dropcap columns">
+      <p>
+        Brucisphildy nasceu onde poucos sobrevivem.
+      </p>
+
+      <p>
+        Nas margens da cidade portuária de Marrow’s Edge,
+        um lugar esquecido por deuses e mortais.
+      </p>
+
+      <p>
+        Não houve celebração.
+        Não houve família.
+      </p>
+
+      <p>
+        Apenas um corpo pequeno,
+        enrolado em um pano gasto,
+        deixado à própria sorte.
+      </p>
+
+      <p>
+        E uma chave.
+      </p>
+
+      <p>
+        Presa ao seu pescoço desde o primeiro dia.
+      </p>
+
+      <p>
+        Prateada.
+        Antiga.
+        Silenciosa.
+      </p>
+
+      <p>
+        Ninguém jamais explicou sua origem.
+      </p>
+
+      <p>
+        E, com o tempo,
+        ninguém mais se importou.
+      </p>
+
+      <p>
+        Brucisphildy cresceu nas ruas,
+        aprendendo cedo que sobreviver exigia mais do que força.
+      </p>
+
+      <p>
+        Exigia atenção.
+        Exigia rapidez.
+      </p>
+
+      <p>
+        E, acima de tudo,
+        exigia saber o que pegar…
+        e quando pegar.
+      </p>
+
+      <p>
+        Mas havia algo estranho nele.
+      </p>
+
+      <p>
+        Uma compulsão.
+      </p>
+
+      <p>
+        Um impulso constante por objetos brilhantes,
+        como se algo dentro dele fosse atraído por aquilo.
+      </p>
+
+      <p>
+        Como se a chave em seu pescoço
+        fosse um farol invisível,
+        guiando seus instintos.
+      </p>
+
+      <p>
+        O que começou como sobrevivência,
+        tornou-se hábito.
+      </p>
+
+      <p>
+        E o hábito…
+        virou natureza.
+      </p>
+
+      <p>
+        Até o dia em que tudo deu errado.
+      </p>
+
+      <p>
+        Um roubo mal planejado.
+        Um alvo errado.
+      </p>
+
+      <p>
+        E, pela primeira vez,
+        Brucisphildy esteve perto de morrer.
+      </p>
+
+      <p>
+        Foi então que alguém o encontrou.
+      </p>
+
+      <p>
+        Não por acaso.
+      </p>
+
+      <p>
+        Mas por interesse.
+      </p>
+
+      <p>
+        Um emissário da Casa Kharzug.
+      </p>
+
+      <p>
+        Uma casa conhecida por sua brutalidade,
+        seu exército implacável
+        e sua forma direta de lidar com o mundo.
+      </p>
+
+      <p>
+        Mas eles não viram nele um fracasso.
+      </p>
+
+      <p>
+        Viram potencial.
+      </p>
+
+      <p>
+        Brucisphildy foi levado,
+        treinado,
+        moldado.
+      </p>
+
+      <p>
+        Não como soldado.
+      </p>
+
+      <p>
+        Mas como algo mais útil.
+      </p>
+
+      <p>
+        Um caçador de segredos.
+      </p>
+
+      <p>
+        Entre furtos e venenos,
+        ele aprendeu a se mover onde ninguém mais consegue.
+      </p>
+
+      <p>
+        A ver o que outros ignoram.
+      </p>
+
+      <p>
+        A pegar aquilo que não deveria ser encontrado.
+      </p>
+
+      <p>
+        Ainda assim,
+        a chave nunca deixou seu pescoço.
+      </p>
+
+      <p>
+        E nunca deixou sua mente.
+      </p>
+
+      <p>
+        Com o tempo,
+        ele começou a perceber.
+      </p>
+
+      <p>
+        Não era apenas um objeto.
+      </p>
+
+      <p>
+        Era um guia.
+      </p>
+
+      <p>
+        Um sinal.
+      </p>
+
+      <p>
+        Uma promessa.
+      </p>
+
+      <p>
+        Agora, Brucisphildy não rouba apenas por sobrevivência.
+      </p>
+
+      <p>
+        Ele busca.
+      </p>
+
+      <p>
+        Pistas.
+        Fragmentos.
+        Histórias esquecidas.
+      </p>
+
+      <p>
+        Tudo que possa levá-lo mais perto da verdade.
+      </p>
+
+      <p>
+        Porque ele sabe…
+      </p>
+
+      <p>
+        Em algum lugar,
+        existe algo que aquela chave pode abrir.
+      </p>
+
+      <p>
+        E quando esse momento chegar,
+        ele finalmente descobrirá
+        quem ele realmente é.
+      </p>
+    </div>
+  </article>
+
+  <article class="page character-portrait">
+    <div class="chapter-tag">Chave do Destino</div>
+    <h2>Brucisphildy e o Mistério</h2>
+
+    <div class="img-frame">
+      <img src="PLAYERS/field.jpeg" alt="Brucisphildy" />
+      <div class="caption">
+        Brucisphildy, meio-orc ladino moldado nas ruas de Marrow’s Edge e refinado pela Casa Kharzug.
+        Carrega consigo uma chave prateada cuja origem permanece desconhecida — um objeto que parece
+        guiá-lo silenciosamente em direção a algo maior.
+      </div>
+    </div>
+    <p class="quote">
+      “Algumas portas não deveriam ser abertas. Mas ele nasceu com a chave.”
+    </p>
+  </article>
+</section>
+    <section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Registro de Personagem</div>
+    <h2>Jhester Veraryth</h2>
+    <div class="ornament">✦</div>
+
+    <div class="session-card">
+      <p><strong>Raça:</strong> Humano</p>
+      <p><strong>Classe:</strong> Arqueiro / Patrulheiro</p>
+      <p><strong>Título:</strong> O Falso Herdeiro</p>
+    </div>
+
+    <p class="quote">
+      “A glória não é conquistada. Ela pertence àqueles que nasceram para recebê-la.”
+    </p>
+
+    <div class="dropcap columns">
+      <p>
+        Jhester Veraryth nasceu cercado por ouro,
+        silêncio obediente
+        e mentiras confortáveis.
+      </p>
+
+      <p>
+        Filho de membros da família real de Astraven,
+        cresceu sem jamais conhecer dificuldade.
+      </p>
+
+      <p>
+        Seu pai,
+        irmão gêmeo do rei Thomen Veraryth,
+        era um homem de guerra.
+      </p>
+
+      <p>
+        Seu tio,
+        o próprio rei,
+        governava com firmeza.
+      </p>
+
+      <p>
+        Jhester…
+        nunca precisou fazer nada.
+      </p>
+
+      <p>
+        Sua maior preocupação
+        era o atraso de uma criada.
+      </p>
+
+      <p>
+        Dois minutos já eram suficientes
+        para gerar irritação.
+      </p>
+
+      <p>
+        O mundo sempre esteve ali para servi-lo.
+      </p>
+
+      <p>
+        E ele acreditou nisso.
+      </p>
+
+      <p>
+        Nunca esteve em uma batalha.
+      </p>
+
+      <p>
+        Nunca viu sangue de verdade.
+      </p>
+
+      <p>
+        Nunca enfrentou algo que pudesse feri-lo.
+      </p>
+
+      <p>
+        Ainda assim,
+        acreditava ser superior.
+      </p>
+
+      <p>
+        Para evitar contato direto com qualquer perigo,
+        escolheu a besta.
+      </p>
+
+      <p>
+        Distância era conforto.
+      </p>
+
+      <p>
+        Sua mãe lhe ensinou truques de magia.
+      </p>
+
+      <p>
+        Seu pai lhe ensinou a atirar.
+      </p>
+
+      <p>
+        Mas nenhum deles o ensinou a viver.
+      </p>
+
+      <p>
+        Quando ninguém estava olhando,
+        treinava com sua empregada como alvo.
+      </p>
+
+      <p>
+        Nunca a matou.
+      </p>
+
+      <p>
+        Não por misericórdia.
+      </p>
+
+      <p>
+        Mas porque aquilo seria inconveniente.
+      </p>
+
+      <p>
+        Sujaria suas roupas.
+      </p>
+
+      <p>
+        E seu quarto.
+      </p>
+
+      <p>
+        Então veio o momento que deveria mudá-lo.
+      </p>
+
+      <p>
+        Seus pais partiram em uma viagem diplomática.
+      </p>
+
+      <p>
+        Nunca retornaram.
+      </p>
+
+      <p>
+        Uma criatura do mar
+        encerrou suas vidas.
+      </p>
+
+      <p>
+        Os sobreviventes voltaram com a notícia.
+      </p>
+
+      <p>
+        E Jhester…
+      </p>
+
+      <p>
+        os executou.
+      </p>
+
+      <p>
+        Não por dor.
+      </p>
+
+      <p>
+        Não por luto.
+      </p>
+
+      <p>
+        Mas por falha.
+      </p>
+
+      <p>
+        Eles não protegeram a família real.
+      </p>
+
+      <p>
+        E isso, para ele,
+        era imperdoável.
+      </p>
+
+      <p>
+        Após isso, foi acolhido pelo rei.
+      </p>
+
+      <p>
+        Mais luxo.
+        Mais privilégios.
+        Mais bajulação.
+      </p>
+
+      <p>
+        Mas também…
+        mais comparação.
+      </p>
+
+      <p>
+        Seu primo, Retalius Veraryth,
+        era tudo que Jhester não era.
+      </p>
+
+      <p>
+        Um guerreiro.
+        Um herói.
+        Um nome celebrado.
+      </p>
+
+      <p>
+        Jhester era ignorado.
+      </p>
+
+      <p>
+        E isso o incomodava mais do que qualquer perda.
+      </p>
+
+      <p>
+        Em sua mente,
+        ele deveria ser o centro de tudo.
+      </p>
+
+      <p>
+        Até que encontrou um convite.
+      </p>
+
+      <p>
+        A Guilda dos Errantes.
+      </p>
+
+      <p>
+        Sem pensar,
+        tomou uma decisão.
+      </p>
+
+      <p>
+        Não por dever.
+      </p>
+
+      <p>
+        Mas por atenção.
+      </p>
+
+      <p>
+        Vestiu seu traje real.
+      </p>
+
+      <p>
+        Pegou sua besta.
+      </p>
+
+      <p>
+        E partiu.
+      </p>
+
+      <p>
+        Recrutou guardas.
+      </p>
+
+      <p>
+        Prometeu moedas.
+      </p>
+
+      <p>
+        Deu álcool.
+      </p>
+
+      <p>
+        E os perdeu pelo caminho.
+      </p>
+
+      <p>
+        Alguns morreram.
+      </p>
+
+      <p>
+        Outros foram esquecidos.
+      </p>
+
+      <p>
+        Ele sequer percebeu.
+      </p>
+
+      <p>
+        Quando chegou à guilda,
+        estava exatamente como saiu do castelo.
+      </p>
+
+      <p>
+        Limpo.
+      </p>
+
+      <p>
+        Intacto.
+      </p>
+
+      <p>
+        E completamente alheio.
+      </p>
+
+      <p>
+        Exigiu uma missão.
+      </p>
+
+      <p>
+        Exigiu resultados.
+      </p>
+
+      <p>
+        Exigiu glória.
+      </p>
+
+      <p class="quote">
+        Porque, para Jhester,
+        o mundo não é algo a ser enfrentado.
+      </p>
+
+      <p class="quote">
+        É algo que deveria reconhecê-lo.
+      </p>
+    </div>
+  </article>
+
+  <article class="page character-portrait">
+    <div class="chapter-tag">Sangue Real</div>
+    <h2>Jhester e a Busca por Glória</h2>
+
+    <div class="img-frame">
+      <img src="PLAYERS/jhester.jpeg" alt="Jhester Veraryth" />
+      <div class="caption">
+        Jhester Veraryth, herdeiro de Astraven, criado no luxo e distante da realidade do mundo.
+        Armado com uma besta e uma visão distorcida de grandeza, ele busca conquistar a glória
+        que acredita já lhe pertencer.
+      </div>
+    </div>
+    <p class="quote">
+      “Ele não busca se tornar um herói… apenas ser tratado como um.”
+    </p>
+  </article>
+</section>
+    <section class="spread reveal">
+  <article class="page">      
+    <div class="chapter-tag">Registro de Personagem</div>
+    <h2>Samael Aurelion</h2>
+    <div class="ornament">✦</div>
+
+    <div class="session-card">
+      <p><strong>Raça:</strong> Aasimar</p>
+      <p><strong>Classe:</strong> Paladino</p>
+      <p><strong>Título:</strong> O Escolhido De Safira</p>
+    </div>
+
+    <p class="quote">
+      “A fé não é escolhida. Ela escolhe.”
+    </p>
+
+    <div class="dropcap columns">
+
+      <p>
+        Em uma noite silenciosa,
+        quando nem o vento ousava cruzar os muros do quartel religioso,
+        um bebê foi deixado diante de suas portas.
+      </p>
+
+      <p>
+        Sem nome.
+      </p>
+
+      <p>
+        Sem origem.
+      </p>
+
+      <p>
+        Sem explicação.
+      </p>
+
+      <p>
+        Apenas um fragmento de metal antigo o acompanhava.
+      </p>
+
+      <p>
+        Pequeno.
+        Desgastado.
+        Marcado por um símbolo que o tempo havia quase apagado.
+      </p>
+
+      <p>
+        E ainda assim…
+        nenhum dos monges ousou ignorá-lo.
+      </p>
+
+      <p>
+        Havia algo ali.
+      </p>
+
+      <p>
+        Algo que não pertencia àquele lugar.
+      </p>
+
+      <p>
+        Foi assim que Samael cresceu.
+      </p>
+
+      <p>
+        Entre homens de fé.
+      </p>
+
+      <p>
+        Cercado por doutrinas que jamais concordavam entre si.
+      </p>
+
+      <p>
+        Cada mestre oferecia uma verdade.
+      </p>
+
+      <p>
+        Cada crença apontava um caminho.
+      </p>
+
+      <p>
+        E nenhuma parecia completa.
+      </p>
+
+      <p>
+        Enquanto outros escolhiam deuses,
+        juramentos e destinos…
+      </p>
+
+      <p>
+        Samael observava.
+      </p>
+
+      <p>
+        Aprendia.
+      </p>
+
+      <p>
+        Questionava.
+      </p>
+
+      <p>
+        Não por rebeldia.
+      </p>
+
+      <p>
+        Mas porque respostas simples nunca foram suficientes.
+      </p>
+
+      <p>
+        Havia nele uma precisão inquietante.
+      </p>
+
+      <p>
+        Como se estivesse procurando algo
+        que ainda não tinha nome.
+      </p>
+
+      <p>
+        No combate,
+        essa diferença se tornava evidente.
+      </p>
+
+      <p>
+        Samael não lutava como alguém que aprende.
+      </p>
+
+      <p>
+        Ele lutava como alguém que lembra.
+      </p>
+
+      <p>
+        Seus movimentos eram naturais demais.
+      </p>
+
+      <p>
+        Seus reflexos rápidos demais.
+      </p>
+
+      <p>
+        Como se seu corpo carregasse memórias
+        que sua mente jamais viveu.
+      </p>
+
+      <p>
+        E havia momentos…
+      </p>
+
+      <p>
+        em que tudo mudava.
+      </p>
+
+      <p>
+        O ar ficava mais pesado.
+      </p>
+
+      <p>
+        O silêncio dominava o ambiente.
+      </p>
+
+      <p>
+        Até mesmo os mais experientes recuavam,
+        sem entender o motivo.
+      </p>
+
+      <p>
+        E por um instante…
+      </p>
+
+      <p>
+        seus olhos não eram humanos.
+      </p>
+
+      <p>
+        Quando atingiu a idade adulta,
+        seu mestre o chamou pela última vez.
+      </p>
+
+      <p>
+        Não para dar respostas.
+      </p>
+
+      <p>
+        Mas para libertá-lo delas.
+      </p>
+
+      <p>
+        Disse que ele já havia aprendido
+        tudo sobre deuses,
+        fé
+        e o mundo.
+      </p>
+
+      <p>
+        E então pediu…
+      </p>
+
+      <p>
+        que esquecesse.
+      </p>
+
+      <p>
+        Porque a fé,
+        segundo ele,
+        não é algo que se escolhe.
+      </p>
+
+      <p>
+        É algo que escolhe.
+      </p>
+
+      <p>
+        E quando isso acontecesse…
+      </p>
+
+      <p>
+        Samael saberia.
+      </p>
+
+      <p>
+        Sem juramento,
+        sem símbolo,
+        sem destino definido…
+      </p>
+
+      <p>
+        ele partiu.
+      </p>
+
+      <p>
+        Não havia direção.
+      </p>
+
+      <p>
+        Mas havia algo pior.
+      </p>
+
+      <p>
+        Um chamado.
+      </p>
+
+      <p>
+        Distante.
+      </p>
+
+      <p>
+        Antigo.
+      </p>
+
+      <p>
+        Constante.
+      </p>
+
+      <p>
+        Não era a voz de um deus.
+      </p>
+
+      <p>
+        Era algo anterior a eles.
+      </p>
+
+      <p>
+        Desde então,
+        os sonhos começaram.
+      </p>
+
+      <p>
+        Não eram feitos de rostos.
+      </p>
+
+      <p>
+        Nem de memórias.
+      </p>
+
+      <p>
+        Eram visões.
+      </p>
+
+      <p>
+        Céus em chamas.
+      </p>
+
+      <p>
+        Sombras colossais.
+      </p>
+
+      <p>
+        Asas que cobriam o mundo.
+      </p>
+
+      <p>
+        E olhos…
+      </p>
+
+      <p>
+        observando tudo.
+      </p>
+
+      <p>
+        Julgando tudo.
+      </p>
+
+      <p>
+        Em meio a tudo isso,
+        uma única certeza permaneceu.
+      </p>
+
+      <p>
+        Samael não foi abandonado.
+      </p>
+
+      <p class="quote">
+        Ele foi deixado exatamente onde deveria estar.
+      </p>
+
+    </div>
+  </article>
+
+  <article class="page character-portrait">
+    <div class="chapter-tag">Presságio Divino</div>
+    <h2>Samael e o Chamado</h2>
+
+    <div class="img-frame">
+      <img src="PLAYERS/samael.jpeg" alt="Samael Aurelion" />
+      <div class="caption">
+        Samael Aurelion, um aasimar sem juramento e sem deus. Criado entre crenças conflitantes,
+        ele caminha guiado por algo mais antigo que fé — um chamado que ainda não revelou sua verdadeira natureza.
+      </div>
+    </div>
+    <p class="quote">
+      “Ele não segue um deus… algo o observa, algo que sempre o esperou...”
+    </p>
+  </article>
+</section>
+    <section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Registro de Personagem</div>
+    <h2>Benedito Bostaros II</h2>
+    <div class="ornament">✦</div>
+
+    <div class="session-card">
+      <p><strong>Raça:</strong> Aasimar</p>
+      <p><strong>Classe:</strong> Bardo</p>
+      <p><strong>Título:</strong> O Herdeiro da Canção Quebrada</p>
+    </div>
+
+    <p class="quote">
+      “Ele partiu para salvar o pai… sem perceber que já começava a se perder pelo mesmo caminho.”
+    </p>
+
+    <div class="dropcap columns">
+      <p>
+        Aqui começa a história de alguém não tão grande assim.
+      </p>
+
+      <p>
+        Benedito Bostaros II, um pequeno aasimar vindo do reino de Caelmyr,
+        pertencente à Casa Stormeir.
+      </p>
+
+      <p>
+        Engraçado.
+      </p>
+
+      <p>
+        Simples.
+      </p>
+
+      <p>
+        E, por muito tempo,
+        sem qualquer motivação verdadeiramente heróica.
+      </p>
+
+      <p>
+        Mas para entender como ele chegou até esse ponto,
+        era preciso voltar.
+      </p>
+
+      <p>
+        Voltar ao pai.
+      </p>
+
+      <p>
+        Benedito Bostaros I era um homem de grande coração
+        e um músico ainda maior.
+      </p>
+
+      <p>
+        Também aasimar,
+        também bardo,
+        também envolto em um passado sobre o qual pouco falava.
+      </p>
+
+      <p>
+        Ninguém sabia ao certo quem ele tinha sido antes do nascimento do filho.
+      </p>
+
+      <p>
+        Apenas que, havia muito tempo,
+        ele já vivia entre cordas, canções e histórias.
+      </p>
+
+      <p>
+        Suas músicas acendiam o fogo das casas,
+        aqueciam os vizinhos
+        e enchiam o pequeno Benedito de admiração.
+      </p>
+
+      <p>
+        Era um pai presente.
+      </p>
+
+      <p>
+        Brincalhão.
+      </p>
+
+      <p>
+        Daqueles que transformavam qualquer noite simples em festa.
+      </p>
+
+      <p>
+        Tocava o alaúde,
+        cantava sobre feitos antigos
+        e espalhava pela vila histórias heróicas
+        que ninguém sabia se tinham sido inventadas,
+        vividas
+        ou apenas herdadas.
+      </p>
+
+      <p>
+        A vida dos dois era modesta.
+      </p>
+
+      <p>
+        Sem luxo.
+      </p>
+
+      <p>
+        Sem glória.
+      </p>
+
+      <p>
+        Mas cheia de uma felicidade pequena
+        e suficiente.
+      </p>
+
+      <p>
+        Até que a escuridão entrou pela porta.
+      </p>
+
+      <p>
+        Em uma noite de cantoria,
+        bebida e dança,
+        Benedito Pai foi interrompido por um homem misterioso.
+      </p>
+
+      <p>
+        Um homem que falava de alegria fácil
+        e dinheiro rápido.
+      </p>
+
+      <p>
+        Falava de apostas.
+      </p>
+
+      <p>
+        Jogos de azar.
+      </p>
+
+      <p>
+        Prostitutas.
+      </p>
+
+      <p>
+        E de todo tipo de vício
+        que um homem desprevenido confunde com liberdade.
+      </p>
+
+      <p>
+        O que não foi dito de imediato
+        era que nada daquilo vinha sem preço.
+      </p>
+
+      <p>
+        Benedito Pai caiu.
+      </p>
+
+      <p>
+        Bebia todos os dias.
+      </p>
+
+      <p>
+        Fumava.
+      </p>
+
+      <p>
+        Trazia mulheres para casa.
+      </p>
+
+      <p>
+        Apostava até o dinheiro que não tinha.
+      </p>
+
+      <p>
+        E, quando tudo já havia sido perdido,
+        a cobrança chegou.
+      </p>
+
+      <p>
+        O homem voltou.
+      </p>
+
+      <p>
+        E, como não havia mais nada a receber,
+        escolheu arrancar outra coisa.
+      </p>
+
+      <p>
+        Disse que tiraria o bem mais precioso de alguém daquela raça.
+      </p>
+
+      <p>
+        Então, diante do filho,
+        homens invadiram a casa,
+        seguraram Benedito Pai
+        e cortaram suas asas pela metade.
+      </p>
+
+      <p>
+        Ao ver aquilo,
+        o pequeno Benedito entendeu que certas dívidas
+        não destroem apenas bolsos.
+      </p>
+
+      <p>
+        Destroem essências.
+      </p>
+
+      <p>
+        Depois daquele dia,
+        o pai nunca mais foi o mesmo.
+      </p>
+
+      <p>
+        Parou de cantar.
+      </p>
+
+      <p>
+        Parou de festejar.
+      </p>
+
+      <p>
+        Quase parou de existir.
+      </p>
+
+      <p>
+        Perder as asas foi mais do que mutilação.
+      </p>
+
+      <p>
+        Foi a perda de tudo aquilo que o fazia ser quem era.
+      </p>
+
+      <p>
+        Benedito viu isso acontecer
+        e decidiu que não ficaria parado.
+      </p>
+
+      <p>
+        Temia que o pai nunca recuperasse a própria alegria.
+      </p>
+
+      <p>
+        Pior:
+        temia que o homem misterioso voltasse um dia
+        para arrancar o que ainda restava.
+      </p>
+
+      <p>
+        Então tomou a maior decisão da sua vida.
+      </p>
+
+      <p>
+        Tornar-se aventureiro.
+      </p>
+
+      <p>
+        Parecia simples em sua cabeça.
+      </p>
+
+      <p>
+        As histórias diziam que aventureiros conseguiam glória,
+        riqueza
+        e um nome.
+      </p>
+
+      <p>
+        Talvez com isso pudesse quitar a dívida do pai.
+      </p>
+
+      <p>
+        Talvez pudesse até devolver a ele
+        alguma parte da alegria perdida.
+      </p>
+
+      <p>
+        Com as últimas moedas que restavam,
+        comprou uma armadura,
+        uma pequena besta
+        e levou consigo o velho alaúde do pai.
+      </p>
+
+      <p>
+        Era o início de sua própria canção.
+      </p>
+
+      <p>
+        Mas a estrada se mostrou menos nobre do que imaginava.
+      </p>
+
+      <p>
+        Durante suas pequenas aventuras,
+        Benedito percebeu que possuía um talento raro.
+      </p>
+
+      <p>
+        Além de bom músico,
+        sabia manipular,
+        enganar,
+        persuadir
+        e atuar com uma facilidade quase sobrenatural.
+      </p>
+
+      <p>
+        Às vezes por necessidade.
+      </p>
+
+      <p>
+        Às vezes por conveniência.
+      </p>
+
+      <p>
+        Às vezes apenas porque conseguia.
+      </p>
+
+      <p>
+        Começou a fazer pequenos furtos.
+      </p>
+
+      <p>
+        Afinal, cada moeda importava.
+      </p>
+
+      <p>
+        Só que a estrada também lhe trouxe velhos prazeres.
+      </p>
+
+      <p>
+        Mulheres.
+      </p>
+
+      <p>
+        Bebida.
+      </p>
+
+      <p>
+        Jogos.
+      </p>
+
+      <p>
+        E, quando menos percebeu,
+        estava trilhando o mesmo caminho maldito do pai.
+      </p>
+
+      <p>
+        Trabalhos curtos.
+      </p>
+
+      <p>
+        Dinheiro desperdiçado.
+      </p>
+
+      <p>
+        Diversão vazia.
+      </p>
+
+      <p>
+        Até que um anão apareceu.
+      </p>
+
+      <p>
+        Entrou no bar onde Benedito bebia
+        e, de algum jeito,
+        o fez falar.
+      </p>
+
+      <p>
+        Talvez pela bebida.
+      </p>
+
+      <p>
+        Talvez por algo mais.
+      </p>
+
+      <p>
+        Mas enquanto Benedito abria a própria história,
+        o anão parecia conhecê-la desde o começo.
+      </p>
+
+      <p>
+        E quando finalmente falou,
+        suas palavras acertaram onde mais doía.
+      </p>
+
+      <p>
+        Perguntou o que ele ainda fazia ali.
+      </p>
+
+      <p>
+        Disse que cada dia perdido naquela vida
+        podia ser um dia a menos na vida de seu pai.
+      </p>
+
+      <p>
+        Disse também que, naquele ritmo,
+        Benedito jamais conseguiria o dinheiro que precisava.
+      </p>
+
+      <p>
+        O jovem aasimar ficou sem resposta.
+      </p>
+
+      <p>
+        Pela primeira vez em muito tempo,
+        alguém havia colocado sua ruína em palavras simples.
+      </p>
+
+      <p>
+        Mas o anão não parou por aí.
+      </p>
+
+      <p>
+        Lembrou a Benedito que ele não era um homem triste por natureza.
+      </p>
+
+      <p>
+        Que ainda havia nele algo digno de seguir em frente.
+      </p>
+
+      <p>
+        E então lhe deu um rumo.
+      </p>
+
+      <p>
+        Valdris.
+      </p>
+
+      <p>
+        Lá, disse ele,
+        um velho amigo chamado Torvak trabalhava para uma grande guilda
+        e conhecia missões de verdade.
+      </p>
+
+      <p>
+        Missões perigosas.
+      </p>
+
+      <p>
+        Mas que pagavam bem.
+      </p>
+
+      <p>
+        Benedito prometeu que partiria no dia seguinte.
+      </p>
+
+      <p>
+        Pagou uma bebida ao anão em agradecimento.
+      </p>
+
+      <p>
+        Depois bebeu tanto
+        que desmaiou
+        e só acordou dois dias mais tarde,
+        largado em um chiqueiro.
+      </p>
+
+      <p>
+        O velho já não estava lá.
+      </p>
+
+      <p>
+        Mas as palavras dele permaneciam.
+      </p>
+
+      <p class="quote">
+        E foi assim que a verdadeira história de Benedito começou.
+      </p>
+    </div>
+  </article>
+
+  <article class="page character-portrait">
+    <div class="chapter-tag">Canção Herdada</div>
+    <h2>Benedito e o Legado de seu Pai</h2>
+
+    <div class="img-frame">
+      <img src="PLAYERS/benedito.jpeg" alt="Benedito Bostaros II" />
+      <div class="caption">
+        Benedito Bostaros II, aasimar e bardo de Caelmyr. Herdeiro de um nome, de um alaúde e de uma dívida que jamais foi sua,
+        ele caminha entre o humor e a ruína, tentando salvar o pai sem perceber o quanto o próprio destino começa a rimar
+        com a mesma tragédia.
+      </div>
+    </div>
+
+    <p class="quote">
+      “Ele saiu em busca de glória. Encontrou primeiro a sombra daquilo que jurou vencer.”
+    </p>
+  </article>
+</section>
+      <section class="spread reveal" id="mapa">
+        <article class="page">
+          <div class="chapter-tag">Atlas de Prestoros</div>
+          <h2>Mapa</h2>
+          <div class="ornament">✦</div>
+          <div class="img-frame">
+            <img src="MAPA/image.png" alt="Mapa" />
+          </div>
+        </article>
+
+        <article class="page" id="npc-importante">
+          <div class="chapter-tag">Registro Narrativo</div>
+          <h2>NPCs Importantes Sessão 1</h2>
+          <div class="ornament">✦</div>
+
+          <div class="session-card">
+            <p><strong>Nome:</strong> Thalgar</p>
+            <p><strong>Título:</strong> Dragonslayer</p>
+          </div>
+
+          <p class="quote">
+            “É melhor vocês partirem. Se ficarem, eu chamarei vocês de tolos.”
+          </p>
+
+          <div class="img-frame">
+            <img src="NPC/Thalgar.png" alt="Thalgar" />
+          </div>
+        </article>
+      </section>
+
+      <section class="spread reveal" id="locais-importantes">
+        <article class="page">
+          <div class="chapter-tag">Legenda</div>
+          <h2>Locais Importantes Sessão 1</h2>
+          <div class="ornament">✧</div>
+          <div class="session-card">
+            <p><strong>Exemplos:</strong></p>
+            <p>• Taverna dos Errantes</p>
+            <p>• Covil de Drakan</p>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="chapter-tag">Registro Narrativo</div>
+          <h2>NPCs Importantes Sessão 1</h2>
+          <div class="ornament">✦</div>
+          <div class="session-card">
+            <p><strong>Nome:</strong> Caio</p>
+            <p><strong>Título:</strong> Ajudande da Taverna dos Errantes</p>
+          </div>
+          <p class="quote">“🖕🏻”</p>
+          <div class="img-frame">
+            <img src="NPC/caio.png" alt="Caio" />
+          </div>
+        </article>
+      </section>
+
+      <section class="spread reveal" id="sessao1">
+        <article class="page">
+          <div class="chapter-tag">Crônicas de Prestoros</div>
+          <h2 class="small-title">Sessão 1 — O Segredo do Covil de Drakan</h2>
+          <div class="ornament">✦</div>
+          <div class="session-card">
+            <p><strong>Data:</strong> 28 de Março de 2026 — Sábado</p>
+            <p><strong>Local do início:</strong> Taverna dos Errantes</p>
+            <p><strong>Personagens presentes no arco:</strong> Benedito, Brucisphildy, Gooner, Vladric, Earendil, Elyra, Nyx, Kael, Samael e Pickman, além de Torvak, Caio, Melicent e Thalgar.</p>
+            <p><strong>Objetivo aparente:</strong> cumprir a missão entregue por Thalgar e eliminar a ameaça escondida no Covil de Drakan.</p>
+            <p><strong>Objetivo real:</strong> sobreviver ao suficiente para compreender que aquela missão era apenas a superfície de algo muito maior.</p>
+          </div>
+          <p class="quote">“Algumas missões não servem para provar força. Servem para mostrar o quanto ela ainda falta.”</p>
+        </article>
+
+        <article class="page">
+          <div class="chapter-tag">Abertura</div>
+          <h2>O Livro se Abre</h2>
+          <div class="img-frame">
+            <img src="MONSTROS/DRAKAN.png" alt="Capa da Sessão 1 de Prestoros" />
+            <div class="caption">
+              A capa deste volume resume o tom da sessão: fogo, sangue, sombras e a presença esmagadora de Drakan ao fundo.
+              Não é a imagem de uma vitória simples, mas o retrato de um grupo que entrou no covil sem compreender plenamente
+              o que o aguardava nas profundezas.
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="spread reveal">
+        <article class="page">
+          <div class="chapter-tag">Capítulo I</div>
+          <h2>A Taverna dos Errantes</h2>
+          <div class="ornament">✧</div>
+          <div class="dropcap">
+            <p>A noite pairava sobre Prestoros como um véu silencioso. No coração daquele mundo, a Taverna dos Errantes fervilhava de vida. Luz de velas, calor da lareira e o som de histórias enchiam o ambiente com aquela sensação familiar de abrigo temporário — um lugar onde ninguém ficava por muito tempo, mas onde muitos destinos se cruzavam antes de seguir viagem.</p>
+            <p>Atrás do balcão, Torvak, o taverneiro anão, observava tudo com olhos experientes. Ao seu lado, Caio, o tiefling corcunda que trabalhava na taverna, limpava copos com seu desprezo silencioso de sempre, como se já tivesse visto todo tipo de aventureiro, herói fracassado e bêbado desgraçado que o mundo pudesse produzir.</p>
+            <p>Benedito, o aasimar bardo, já estava ali. Conversava com Torvak em clima relativamente calmo, bebendo e acompanhando o movimento da taverna, até que Field — Brucisphildy, o ladino meio-orc — entrou e se juntou à interação. Foi um começo comum, quase banal. Mas aquela noite não nascera para ser comum.</p>
+            <p>Um som seco ecoou pelo salão. Forte o bastante para chamar a atenção. Debaixo de uma das mesas, um anão se moveu. Era Gooner. Ele se levantou confuso, ainda meio destruído, e começou a interagir com os outros aos pulos, tentando alcançar o balcão. Seus olhos bateram em um pedaço de carne. Ele pegou. Comeu. Pouco depois, vomitou no balcão. Caio limpou tudo sem alterar a expressão nem por um segundo.</p>
+            <p>Logo em seguida, Vladric entrou na taverna com seu jeito estranho, como se tudo aquilo fosse novo para ele — as pessoas, o lugar, o próprio mundo. Depois vieram Earendil e Elyra, que não se misturaram ao grupo principal e preferiram o outro lado da taverna, próximos da lareira, observando à distância. Melicent, a elfa de canto encantador, entrou com seu companheiro e foi para o fundo do salão.</p>
+            <p>Foi então que Nyx e Kael chegaram. Sentaram-se próximos e começaram a conversar. Vladric se aproximou de Nyx, e entre os dois surgiu aquela sensação de reconhecimento obscuro: algo no sangue, na origem, na presença de cada um parecia se tocar mesmo antes de qualquer explicação. Enquanto isso, Kael, inquieto, moveu-se em furtividade até Elyra e percebeu um símbolo estranho em seu grimório. A maga notou sua aproximação. A tensão cresceu rápido.</p>
+            <p>A briga quase explodiu no meio da taverna. Mas antes que aquilo virasse aço, magia e sangue, Melicent começou a cantar. Conforme sua voz preenchia o ambiente, anéis de fogo surgiam sob seus pés a cada batida no chão. A magia de amizade se espalhou pelo salão. O conflito se dissolveu antes de nascer. Em vez de brigarem, todos acabaram prestando atenção à música. E, depois que a tensão baixou, uma verdade simples emergiu: todos ali estavam pelo mesmo motivo. Missões. Dinheiro. Propósito.</p>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="chapter-tag">Capítulo II</div>
+          <h2>A Chegada de Thalgar</h2>
+          <div class="ornament">✦</div>
+          <p>Benedito, por já ter certa proximidade com Torvak, aproximou-se do balcão e perguntou se havia alguma missão disponível. O taverneiro respondeu com calma que não tinha uma missão em mãos naquele instante, mas que a missão dele estava prestes a chegar. Ao mesmo tempo, Earendil fechou seu livro no instante exato em que a porta da taverna se abriu, como se tivesse percebido a mesma coisa.</p>
+          <p>Foi então que Thalgar entrou.</p>
+          <p>Cabelos verdes, postura firme, presença suficiente para silenciar o ambiente. Nas costas, trazia uma espada marcada pelo símbolo dos Dragon Slayers. Ele não se apresentou. Não saudou ninguém. Apenas entrou, sentou-se e recebeu sua refeição de Caio, que recolheu a moeda de ouro deixada sobre a mesa antes de se retirar.</p>
+          <p>Alguns dos presentes tentaram interrompê-lo. Gooner, por exemplo, foi um dos que atrapalharam sua refeição. Mas Thalgar não reagiu com explosão nem ameaça. Limitou-se a ignorar todos até terminar de comer. Só então levantou os olhos e agradeceu aos que haviam respeitado sua refeição. Depois disso, veio a provocação: disse que nenhum deles parecia ter capacidade para concluir a missão que estava oferecendo.</p>
+          <p>Os ânimos se acirraram. O orgulho de aventureiro foi ferido. E Thalgar, quase tirando sarro do grupo, explicou que mesmo com um bando numeroso eles ainda teriam de enfrentar criaturas fortes. Então entregou o pergaminho com o nome da missão: <strong>O Covil de Drakar</strong>.</p>
+          <p>O texto falava de uma colina, de uma passagem escondida que levava a um buraco e, além dele, a uma caverna onde repousava uma grande ameaça. Thalgar não especificou a natureza da criatura. Disse apenas que se juntaria a eles assim que possível, depois de resolver coisas mais importantes. O grupo aceitou a missão. Parte por dinheiro. Parte por teimosia. Parte para provar que ele estava errado.</p>
+          <p>Enquanto isso, um segundo grupo chegava à taverna: Samael e Pickman. Eles procuravam missão e ouviram de Torvak que a deles já estava lá fora — o grupo acabara de sair, guiado por Thalgar. Samael ainda chegou a cruzar com uma figura encapuzada mexendo em livros e escritos do lado de fora, mas não interagiu. Em seguida viu Thalgar se afastando e foi atrás dele, apenas para ouvir que um grupo já havia sido enviado à colina e que ele se juntaria a eles depois. Sem demora, Samael e Pickman partiram para alcançar o restante.</p>
+        </article>
+      </section>
+
+      <section class="spread reveal">
+        <article class="page">
+          <div class="chapter-tag">Capítulo III</div>
+          <h2>A Colina e o Primeiro Sangue</h2>
+          <div class="ornament">✧</div>
+          <p>O grupo subiu a colina durante a noite. A escuridão dominava o caminho, mas logo uma fumaça subindo no alto revelou que algo os esperava. Os ladinos avançaram em furtividade para reconhecer o terreno e Kael conseguiu avistar com precisão o que havia ali: dois bugbears e cerca de vinte goblins reunidos no local.</p>
+          <p>O aviso foi dado. O grupo se posicionou. E o combate começou.</p>
+          <p>Na prática, a vitória veio de forma muito mais simples do que se esperava. Os goblins foram derrotados, os bugbears tombaram, e a sensação inicial era de que o grupo havia superado o primeiro grande teste com relativa facilidade. Mas aquilo não passava da superfície. O verdadeiro covil ainda não havia começado.</p>
+          <p>Depois da luta, eles encontraram o buraco. Profundo. Escuro. Cerca de vinte metros de queda. O grupo ficou um bom tempo tentando pensar em algo inteligente. Ideias surgiram: usar cipós como corda, descer até certo ponto para verificar se a profundidade era real, testar se havia alguma ilusão mágica. Tudo era tentativa. Tudo era improviso.</p>
+          <p>Foi então que veio a ideia mais brilhante e mais idiota da noite.</p>
+          <p>Vladric olhou para o bárbaro e basicamente resumiu o plano em uma frase: jogar Gooner no buraco, porque ele tankaria. O bárbaro, em vez de recusar, topou. Mas antes apontou para Vladric e deixou clara a promessa: se morresse e voltasse à vida, quebraria a cara dele. Dito isso, atirou-se no vazio.</p>
+          <p>O impacto ecoou de baixo para cima. Seco. Final.</p>
+          <p>Gooner morreu.</p>
+          <p>Por alguns segundos, só houve silêncio. Então Benedito ergueu o alaúde e trouxe a morte de volta para trás com uma canção. Lá embaixo, no fundo do buraco, o anão retornou à vida cercado pela luz fria que descia de cima e pelo brilho espectral dos cristais verdes incrustados nas pedras. Era ridículo. Era dramático. Era perfeito.</p>
+          <p class="quote">“Se eu morrer… eu te mato.”</p>
+        </article>
+
+        <article class="page">
+          <div class="chapter-tag">Imagem I</div>
+          <h2>O Salto do Insensato</h2>
+          <div class="img-frame">
+            <img src="SEASON/gooner.jpeg" alt="Gooner no fundo do buraco, apontando para cima" />
+            <div class="caption">
+              Gooner, recém-trazido de volta pela música de Benedito, aponta para cima em fúria e promessa.
+              A cena resume perfeitamente o espírito daquela decisão: absurda, suicida, improvável e inesquecível.
+              Os cristais verdes iluminam a caverna enquanto a luz vinda do alto transforma o fundo do buraco
+              num palco improvisado para a raiva de um anão que ainda pretendia cobrar sua queda.
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="spread reveal">
+        <article class="page">
+          <div class="chapter-tag">Capítulo IV</div>
+          <h2>A Descida</h2>
+          <div class="ornament">✦</div>
+          <div class="dropcap">
+            <p>Sabendo que o plano de jogar o bárbaro tinha sido uma péssima ideia, o restante do grupo improvisou cipós e começou a descer um por um. A caverna era fria, pesada, úmida. Os cristais verdes cravados nas paredes não iluminavam de verdade — pareciam apenas observar. Cada passo para baixo era uma confirmação incômoda de que estavam entrando em um lugar onde já não havia mais caminho simples de volta.</p>
+            <p>Assim que tocaram o chão e se reorganizaram, o perigo veio de todos os lados. Lagartixas esqueléticas, cerca de vinte, começaram a cercá-los nas sombras. Eram rápidas, secas, deformadas, mais ossos do que carne, mais instinto do que inteligência. O combate começou imediatamente.</p>
+            <p>Enquanto o grupo lutava para manter a formação, a pressão vinda da área norte começou a crescer. Mais criaturas estavam convergindo, e a emboscada parecia prestes a se fechar de vez. Foi então que Vladric tomou sua decisão — sem aviso, sem grande consideração pelo posicionamento dos aliados e sem medir plenamente o preço da própria magia.</p>
+            <p>Seu corpo começou a se desfazer. Carne virou líquido. A forma humana colapsou para dentro de si mesma até se tornar uma massa pulsante de sangue. O ar vibrou. E então ele explodiu.</p>
+            <p>A onda vermelha atingiu inimigos, paredes, chão, e também seus próprios aliados. O efeito foi brutal. A manobra ajudou a diminuir o número de inimigos, mas ao custo de transformar o combate em caos total. A partir dali, sobreviver não era só uma questão de lidar com monstros. Era também lidar com a imprevisibilidade do próprio grupo.</p>
+          </div>
+          <p class="quote">A explosão não escolheu alvos. Apenas cobrou proximidade.</p>
+        </article>
+
+        <article class="page">
+          <div class="chapter-tag">Imagem II</div>
+          <h2>A Explosão do Insano</h2>
+          <div class="img-frame">
+            <img src="SEASON/vladric.png" alt="Vladric em forma de bolha de sangue prestes a explodir" />
+            <div class="caption">
+              Vladric no instante em que seu corpo deixa de ser corpo e se torna arma. A esfera de sangue pulsa
+              no centro da caverna cercada pelas lagartixas esqueléticas, enquanto os cristais verdes observam
+              a cena como testemunhas silenciosas. É o momento exato em que o combate deixa de ser apenas difícil
+              e passa a ser caótico.
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="spread reveal">
+        <article class="page">
+          <div class="chapter-tag">Capítulo V</div>
+          <h2>A Linha de Frente</h2>
+          <div class="ornament">✧</div>
+          <p>O caos ainda nem havia terminado quando o túnel revelou um novo problema. Dois dracoliscos surgiram enquanto o grupo ainda enfrentava as lagartixas. O medo cresceu imediatamente. Havia a sensação clara de que recuar seria impossível e que fugir naquele instante só levaria a uma morte mais rápida.</p>
+          <p>Foi então que Samael olhou para Earendil, e Earendil olhou de volta para Samael. Não precisaram de muito mais. A decisão já estava feita entre os dois antes mesmo de ser dita em voz alta: segurariam a linha.</p>
+          <p>Os dois avançaram em direção ao túnel e se colocaram na frente do restante do grupo, criando uma barreira viva para impedir a passagem das criaturas. Chamaram a atenção de todos, ordenando que ficassem juntos e os seguissem. Enquanto o túnel estreito se tornava gargalo, a estratégia de Earendil passou a fazer diferença. O grupo se reorganizou, concentrou a luta e enfrentou os dracoliscos ao mesmo tempo em que terminava de lidar com as lagartixas.</p>
+          <p>Foi uma vitória difícil. Nada simples. Mas foi uma vitória que só aconteceu porque, pela primeira vez naquela descida, todos lutaram como um grupo de verdade.</p>
+          <p>Depois do combate, parte da estrutura cedeu. Uma passagem revelou uma escadaria que descia ainda mais fundo. O ar mudou outra vez. Havia um silêncio diferente lá embaixo. Grande demais. Antigo demais. O tipo de silêncio que não anuncia paz — anuncia presença.</p>
+        </article>
+
+        <article class="page">
+          <div class="chapter-tag">Capítulo VI</div>
+          <h2>O Despertar de Drakan</h2>
+          <div class="ornament">✦</div>
+          <p>Eles desceram.</p>
+          <p>O espaço que se revelou era enorme. Havia um lago, árvores ao redor, porções de terra e rocha, como se um pedaço de outro mundo tivesse sido engolido pelas profundezas. E no centro daquele cenário impossível, deitado como a razão de toda a missão, estava Drakan.</p>
+          <p>Foi naquele instante que o pergaminho da missão brilhou, confirmando o verdadeiro objetivo. Mas o grupo já havia chegado longe demais para que a confirmação servisse como aviso útil.</p>
+          <p>Antes da descida final, o olhar petrificante dos dracoliscos ainda cobrou seu preço: Pickman e Brucisphildy ficaram petrificados e não conseguiram acompanhar os demais. O grupo já entrava diminuído antes mesmo do confronto principal começar.</p>
+          <p>Então o sangue começou a se mover mais uma vez. E Nyx, que até então não estava com eles naquele ponto, surgiu para ajudar Kael e se juntar ao restante. Não houve muito tempo para surpresa. Drakan estava ali. Imenso. Vivo. Real. E muito acima do que eles deveriam enfrentar naquele momento.</p>
+        </article>
+      </section>
+
+      <section class="spread reveal">
+        <article class="page">
+          <div class="chapter-tag">Imagem III</div>
+          <h2>De Frente para Drakan</h2>
+          <div class="img-frame">
+            <img src="SEASON/front.jpeg" alt="Três guerreiros enfrentando Drakan" />
+            <div class="caption">
+              A linha de frente encara Drakan em um cenário tão belo quanto mortal. À esquerda, Gooner com seu machado;
+              ao centro, Samael sustentando a postura de quem sabe que precisa resistir; à direita, Earendil, pronto
+              para firmar a defesa. É a imagem do instante anterior ao desastre — quando a coragem ainda consegue esconder
+              o tamanho real do inimigo.
+            </div>
+          </div>
+          <p class="quote">Eles desceram esperando uma vitória. Encontraram um limite.</p>
+        </article>
+
+        <article class="page">
+          <div class="chapter-tag">Capítulo VII</div>
+          <h2>A Queda</h2>
+          <div class="ornament">✧</div>
+          <p>O combate contra Drakan começou com a esperança teimosa de que estratégia, coragem e improviso bastariam. Não bastaram.</p>
+          <p>Drakan era grande demais, agressivo demais, resistente demais. Um por um, os aventureiros começaram a cair. O esforço do grupo era real. A tentativa de se manter de pé, também. Mas a diferença de poder era brutal.</p>
+          <p>Drakan se via vitorioso. E, por alguns instantes, parecia que aquela seria a verdade final da sessão: um grupo dizimado nas profundezas, derrotado no coração do covil que ousou invadir cedo demais.</p>
+          <p>Foi então que o impossível aconteceu de novo.</p>
+        </article>
+      </section>
+
+      <section class="spread reveal">
+        <article class="page">
+          <div class="chapter-tag">Capítulo VIII</div>
+          <h2>A Chegada do Dragon Slayer</h2>
+          <div class="ornament">✦</div>
+          <div class="dropcap">
+            <p>Um brilho. Um flash. Um intervalo tão curto que quase não pode ser chamado de movimento.</p>
+            <p>Thalgar apareceu como se já devesse estar ali muito antes de todos compreenderem que precisavam dele. Sua espada estava no chão. No instante seguinte, já estava em sua mão. O corte veio profundo, abaixo do corpo de Drakan, abrindo a criatura sem matá-la naquele mesmo golpe, mas dominando completamente o ritmo do confronto. Não foi uma vitória instantânea. Foi uma demonstração de diferença.</p>
+            <p>Thalgar não chegou para discursar. Chegou para reverter o destino da cena. A presença dele mudou o peso do ambiente, mudou a confiança dos aventureiros e mudou a própria postura do dragão. A aura do guerreiro parecia crescer enquanto ele se colocava de costas para a criatura, como alguém que já sabia exatamente o quanto precisava feri-la para virar o jogo.</p>
+            <p>Ele começou a levantar os aliados. O grupo, respirando outra vez, reuniu-se ao redor da única força naquele lugar que parecia realmente capaz de enfrentar o monstro. Juntos, finalizaram Drakan. Mas a verdadeira ameaça daquela noite ainda não tinha mostrado o rosto inteiro.</p>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="chapter-tag">Imagem IV</div>
+          <h2>O Corte que Virou a Cena</h2>
+          <div class="img-frame">
+            <img src="SEASON/thalgar.jpeg" alt="Thalgar diante de Drakan após o corte profundo" />
+            <div class="caption">
+              Thalgar, de frente para Drakan, com a lâmina brilhando em tom esmeralda após o golpe profundo que mudou
+              todo o combate. Os aventureiros caídos ao redor reforçam a diferença entre sobreviver por mérito próprio
+              e sobreviver porque alguém forte o bastante chegou a tempo.
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="spread reveal">
+        <article class="page">
+          <div class="chapter-tag">Capítulo IX</div>
+          <h2>O Abismo</h2>
+          <div class="ornament">✧</div>
+          <p>Drakan tombou. Mas a sensação de alívio não veio.</p>
+          <p>Passos começaram a ecoar. Pesados. Lentos. Inconfundíveis. Não era a aproximação de uma criatura ferida nem de um inimigo comum. Era algo maior. Algo velho. Algo que fazia até o ar parecer menor.</p>
+          <p>Na escuridão perpétua além da área do lago, dentes começaram a surgir. Depois um olho amarelo. Depois a noção do tamanho real daquilo que se movia ali. Era uma criatura abissal, imensa, tão grande quanto um dragão ancião, envolta em uma presença que apagava qualquer ilusão de coragem juvenil.</p>
+          <p>Thalgar olhou para o grupo e foi direto:</p>
+          <p class="quote">“É melhor vocês partirem. Se ficarem, eu chamarei vocês de tolos. Vocês não são fortes o suficiente para essa ameaça.”</p>
+          <p>Eles correram. Porque, desta vez, até o mais orgulhoso entre eles compreendeu que ficar significava morrer inutilmente. Thalgar permaneceu. Sua lâmina começou a brilhar num tom de esmeralda ainda mais intenso. Pela primeira vez, ele mostrava o verdadeiro poder que carregava.</p>
+          <p>Mas os aventureiros não viram o que veio depois. Viram apenas o suficiente para saber que havia horrores maiores do que Drakan no mundo — e que um homem como Thalgar não era apenas um aventureiro habilidoso. Era alguém que já pertencia a outro patamar da guerra.</p>
+        </article>
+
+        <article class="page">
+          <div class="chapter-tag">Encerramento</div>
+          <h2>Fim da Sessão 1</h2>
+          <div class="ornament">✦</div>
+          <p>A primeira sessão terminou não com triunfo absoluto, mas com revelação.</p>
+          <p>Os personagens se conheceram em meio a bebida, vômito, tensão e música. Receberam uma missão que parecia simples demais para o nome que carregava. Desceram ao covil, enfrentaram goblins, ossos, dracoliscos e um dragão colossal. Viram aliados tombarem, viram Vladric explodir a si mesmo, viram a coragem de Samael e Earendil sustentar o impossível e, no fim, viram Thalgar transformar derrota certa em sobrevida.</p>
+          <p>Mais importante do que isso: compreenderam que ainda estavam muito longe do topo da cadeia de monstros, reis e lendas de Prestoros.</p>
+          <p class="quote">E assim terminou a primeira descida — não como glória completa, mas como o começo de algo muito maior.</p>
+          <div class="session-card">
+            <p><strong>Momentos marcados no livro:</strong></p>
+            <p>Imagem I — O Salto do Insensato</p>
+            <p>Imagem II — A Explosão do Insano</p>
+            <p>Imagem III — De Frente para Drakan</p>
+            <p>Imagem IV — O Corte que Virou a Cena</p>
+          </div>
+        </article>
+      </section>
+      <section class="spread reveal" id="sessao2">
+  <article class="page">
+    <div class="chapter-tag">Crônicas de Prestoros</div>
+    <h2 class="small-title">Sessão 2 — O Chamado do Sangue</h2>
+    <div class="ornament">✦</div>
+    <div class="session-card">
+      <p><strong>Data:</strong> Continuação direta após o Covil de Drakan</p>
+      <p><strong>Local do início:</strong> Taverna dos Errantes e arredores de Valdris</p>
+      <p><strong>Personagens presentes no arco:</strong> Vladric, Jhester, Nyx, Gondyr, Elyra, Eärendil, Brucisphildy, Pickman, Benedito, Kael e Samael.</p>
+      <p><strong>Objetivo aparente:</strong> reunir dinheiro suficiente para seguir até o Porto de Sangralia.</p>
+      <p><strong>Objetivo real:</strong> sobreviver ao primeiro vazamento de Sanguinaris no mundo material e compreender que algo muito maior já havia atravessado junto ao sangue.</p>
+    </div>
+    <p class="quote">
+      “Nem toda ferida sangra para fora. Algumas se abrem entre mundos.”
+    </p>
+  </article>
+
+  <article class="page">
+    <div class="chapter-tag">Abertura</div>
+    <h2>Depois de Thalgar</h2>
+    <div class="dropcap">
+      <p>
+        O retorno à Taverna dos Errantes não teve gosto de vitória.
+      </p>
+      <p>
+        Os aventureiros haviam deixado para trás não apenas o covil, não apenas o corpo de Drakan, mas a imagem de Thalgar parado diante de uma criatura cujo tamanho parecia negar qualquer esperança razoável.
+      </p>
+      <p>
+        No caminho de volta, a pergunta cresceu entre eles sem nunca se tornar realmente confortável.
+      </p>
+      <p>
+        Thalgar teria morrido?
+      </p>
+      <p>
+        Alguns acreditavam que sim. Outros sustentavam que ele talvez tivesse fugido. Mas ninguém, nem o mais otimista entre eles, parecia disposto a afirmar que o Dragon Slayer havia derrotado sozinho aquela coisa escondida na escuridão.
+      </p>
+      <p>
+        A dúvida os acompanhou até a taverna.
+      </p>
+      <p>
+        E foi ali, entre a exaustão e o silêncio desconfortável de quem havia sobrevivido cedo demais a algo grande demais, que a segunda parte da história começou.
+      </p>
+    </div>
+  </article>
+</section>
+
+<section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Capítulo I</div>
+    <h2>Os Despertar​es</h2>
+    <div class="ornament">✧</div>
+    <div class="dropcap">
+      <p>
+        A volta a Valdris não trouxe descanso de verdade.
+      </p>
+      <p>
+        Algo havia mudado desde a descida ao covil. O confronto com Drakan, a presença monstruosa que surgiu depois, a visão final de Thalgar ficando para trás — tudo isso pareceu romper alguma camada invisível dentro de cada um.
+      </p>
+      <p>
+        Os aventureiros se dividiram, não apenas fisicamente, mas em experiências que nenhum deles seria capaz de explicar da mesma maneira.
+      </p>
+      <p>
+        Alguns adormeceram e encontraram respostas em sonhos.
+      </p>
+      <p>
+        Outros sentiram a mudança como um clarão, um piscar de olhos entre o que eram e o que começavam a se tornar.
+      </p>
+      <p>
+        Houve aqueles tocados por objetos.
+      </p>
+      <p>
+        Houve aqueles arrastados por memórias antigas, como se os próprios reinos de origem tivessem se inclinado sobre eles por um instante.
+      </p>
+      <p>
+        Não era apenas evolução.
+      </p>
+      <p>
+        Era chamada.
+      </p>
+      <p>
+        Era resposta.
+      </p>
+      <p>
+        Era o primeiro sinal claro de que Prestoros não observava seus aventureiros em silêncio. O mundo olhava de volta.
+      </p>
+    </div>
+  </article>
+  
+  <article class="page">
+    <div class="chapter-tag">Capítulo II</div>
+    <h2>O Escolhido de Safira</h2>
+    <div class="ornament">✦</div>
+    <p>
+      Entre todos, Samael foi aquele que se afastou em busca de silêncio.
+    </p>
+    <p>
+      Em vez de retornar imediatamente à Taverna dos Errantes, ele parou em um pequeno santuário e ali se colocou diante daquilo que, até então, sempre lhe parecera incompleto: os deuses antigos, os ecos da fé, as vozes de algo que nunca se revelava por inteiro.
+    </p>
+    <p>
+      O que veio não foi consolo.
+    </p>
+    <p>
+      Foi escolha.
+    </p>
+    <p>
+      Diante dele passaram presenças dracônicas, vontades antigas, forças que não pediam adoração, mas reconhecimento.
+    </p>
+    <p>
+      E quando o momento chegou, Samael escolheu.
+    </p>
+    <p>
+      A marca surgiu em seu pescoço como um destino finalmente assumido.
+    </p>
+    <p>
+      Safira.
+    </p>
+    <p>
+      O brilho da decisão ainda não havia esfriado quando, ao deixar o santuário, ele trombou com uma figura encapuzada. O encontro durou menos que um segundo, mas bastou.
+    </p>
+    <p>
+      Sob o capuz, por um breve instante, Samael viu cabelos verdes.
+    </p>
+    <p class="quote">
+      O suficiente para que a dúvida sobre Thalgar deixasse de ser apenas dúvida.
+    </p>
+  </article>
+</section>
+<section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Interlúdio</div>
+    <h2>O Nascimento de uma Nova Canção</h2>
+    <div class="ornament">✦</div>
+
+    <div class="dropcap">
+      <p>
+        Enquanto os outros eram tocados por sonhos, marcas e ecos antigos, Benedito foi levado por outra coisa.
+      </p>
+
+      <p>
+        Não houve clarão.
+        Não houve sangue.
+        Não houve violência.
+      </p>
+
+      <p>
+        Houve chamado.
+      </p>
+
+      <p>
+        Em algum momento entre o retorno à taverna e o silêncio pesado que se espalhava sobre Valdris, Benedito se viu caminhando sozinho até o palco erguido no centro da cidade.
+      </p>
+
+      <p>
+        Era um lugar comum em dias de festa.
+        Um espaço de música, anúncios e apresentações.
+        Mas naquela noite, diante dele, o palco parecia diferente.
+      </p>
+
+      <p>
+        Vazio demais.
+        Quieto demais.
+        Antigo demais.
+      </p>
+
+      <p>
+        Ele subiu os degraus sem saber exatamente por quê.
+      </p>
+
+      <p>
+        E quando pisou no centro da madeira,
+        sentiu que já não estava sozinho.
+      </p>
+
+      <p>
+        A presença não veio como homem,
+        nem como monstro,
+        nem como deus.
+      </p>
+
+      <p>
+        Era uma entidade.
+      </p>
+
+      <p>
+        Algo difícil de descrever,
+        como se a própria música tivesse ganhado forma por um instante,
+        como se uma vontade invisível tivesse se curvado sobre o palco para observá-lo.
+      </p>
+
+      <p>
+        Benedito não soube dizer se sentiu medo.
+      </p>
+
+      <p>
+        Talvez porque, pela primeira vez em muito tempo,
+        sentiu que alguém olhava para ele não como fracasso,
+        nem como piada,
+        nem como filho de uma dívida.
+      </p>
+
+      <p>
+        Mas como peça.
+      </p>
+
+      <p>
+        Como resposta.
+      </p>
+
+      <p>
+        E então a voz veio.
+      </p>
+
+      <p class="quote">
+        “Você será o responsável por mantê-los vivos.”
+      </p>
+
+      <p>
+        Não era uma ameaça.
+      </p>
+
+      <p>
+        Nem um pedido.
+      </p>
+
+      <p>
+        Era uma certeza.
+      </p>
+
+      <p>
+        A presença continuou,
+        dizendo que aquilo seria fundamental,
+        que ele precisava aprender,
+        que chegaria o momento em que sua canção não serviria apenas para divertir,
+        enganar
+        ou preencher o vazio entre uma aventura e outra.
+      </p>
+
+      <p>
+        Ela serviria para sustentar vidas.
+      </p>
+
+      <p>
+        Para impedir quedas.
+      </p>
+
+      <p>
+        Para manter acesa a centelha dos que lutavam ao seu lado.
+      </p>
+
+      <p>
+        Benedito permaneceu em silêncio.
+      </p>
+
+      <p>
+        E então fez a única coisa que sabia fazer diante do inexplicável.
+      </p>
+
+      <p>
+        Tocou.
+      </p>
+
+      <p>
+        Não uma música qualquer.
+      </p>
+
+      <p>
+        Mas a melodia que seu pai um dia lhe ensinara.
+      </p>
+
+      <p>
+        A canção antiga.
+        A canção de casa.
+        A canção que existia antes da dívida,
+        antes da queda,
+        antes do medo.
+      </p>
+
+      <p>
+        À medida que a música preenchia o palco,
+        algo mudou.
+      </p>
+
+      <p>
+        O ar vibrou em volta dele.
+      </p>
+
+      <p>
+        A madeira sob seus pés pareceu ressoar como se o próprio centro de Valdris estivesse ouvindo.
+      </p>
+
+      <p>
+        O instrumento em suas mãos deixou de ser apenas lembrança.
+      </p>
+
+      <p>
+        Tornou-se outra coisa.
+      </p>
+
+      <p>
+        Novo.
+        Vivo.
+        Digno da canção que agora carregava.
+      </p>
+
+      <p>
+        Quando a última nota cessou,
+        Benedito já não era exatamente o mesmo homem que havia subido ao palco.
+      </p>
+
+      <p>
+        Havia nele uma mudança difícil de nomear.
+      </p>
+
+      <p>
+        Não apenas poder.
+      </p>
+
+      <p>
+        Não apenas confiança.
+      </p>
+
+      <p>
+        Mas propósito.
+      </p>
+
+      <p class="quote">
+        Naquela noite, um novo Benedito nasceu.
+      </p>
+    </div>
+  </article>
+
+  <article class="page">
+    <div class="chapter-tag">Imagem IV</div>
+    <h2>O Novo Benedito</h2>
+    <div class="img-frame">
+      <img src="PLAYERS/benedito2.jpeg" alt="Benedito no palco de Valdris recebendo seu novo instrumento" />
+      <div class="caption">
+        No palco central de Valdris, Benedito toca a antiga música ensinada por seu pai diante de uma presença que não se revela por completo.
+        É ali que sua canção deixa de ser apenas herança e se torna destino. Ao fim da melodia, um novo instrumento repousa em suas mãos — e com ele,
+        nasce também uma nova versão do bardo.
+      </div>
+    </div>
+
+    <p class="quote">
+      “Sua música não servirá apenas para ser ouvida. Servirá para impedir que eles caiam.”
+    </p>
+  </article>
+</section>
+<section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Capítulo III</div>
+    <h2>Jhester e o Porto</h2>
+    <div class="ornament">✧</div>
+    <p>
+      Enquanto alguns ainda lidavam com seus próprios despertares, outro tipo de problema surgia na taverna.
+    </p>
+    <p>
+      Jhester Veraryth, príncipe de Astraven, tratou de se apresentar ao grupo com toda a arrogância que sua criação lhe havia ensinado. Falou de ouro, falou de expedições e falou, sobretudo, de um destino novo.
+    </p>
+    <p>
+      Porto de Sangralia.
+    </p>
+    <p>
+      Até aquele momento, a maioria dos aventureiros mal possuía qualquer conhecimento real daquele lugar. Mas a promessa de viagem, progresso e dinheiro foi suficiente para prender a atenção.
+    </p>
+    <p>
+      Havia, no entanto, um obstáculo simples e cruel: ninguém tinha recursos para embarcar.
+    </p>
+    <p>
+      Eles precisavam de trabalho.
+      Precisavam de pagamento.
+      Precisavam de uma última missão antes de deixarem Valdris.
+    </p>
+    <p>
+      Foi então que Torvak recebeu a notícia.
+    </p>
+    <p>
+      Algo estava acontecendo em um moinho nos arredores.
+      Manifestações estranhas.
+      Sinais de corrupção.
+      Um incômodo que já não podia ser ignorado.
+    </p>
+    <p>
+      E foi assim que o caminho até o porto passou, antes, por sangue.
+    </p>
+  </article>
+
+  <article class="page">
+    <div class="chapter-tag">Capítulo IV</div>
+    <h2>Sanguinaris</h2>
+    <div class="ornament">✦</div>
+    <p>
+      O que Torvak recebeu como relato de ameaça comum não era, de fato, comum.
+    </p>
+    <p>
+      O problema não vinha apenas do moinho.
+    </p>
+    <p>
+      Vinha de longe.
+    </p>
+    <p>
+      Vinha de outro plano.
+    </p>
+    <p>
+      Nyx e Vladric sentiram isso antes dos demais. Não porque soubessem tudo, mas porque algo naquele chamado lhes era familiar de um jeito perigoso.
+    </p>
+    <p>
+      Era Sanguinaris.
+    </p>
+    <p>
+      O Reino do Sangue.
+    </p>
+    <p>
+      Pela primeira vez na história da campanha, outro plano se revelava como parte ativa da ameaça, e não apenas como lenda distante ou rumor impossível.
+    </p>
+    <p>
+      Bestas daquele lugar haviam começado a atravessar para o mundo material.
+    </p>
+    <p>
+      Mas isso, por si só, ainda não era o pior.
+    </p>
+    <p>
+      Porque junto com o sangue, junto com a ruptura entre planos, algo mais forte havia escorregado por entre as fendas.
+    </p>
+    <p>
+      Algo sem nome revelado.
+    </p>
+    <p>
+      Algo ainda oculto.
+    </p>
+    <p>
+      Algo que agora habitava dentro de Vladric.
+    </p>
+    <p>
+      Mais do que presença.
+      Mais do que influência.
+      Mais do que corrupção.
+    </p>
+    <p>
+      Um poder.
+      Uma vontade.
+      Uma ameaça suspensa em silêncio.
+    </p>
+  </article>
+</section>
+
+<section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Capítulo V</div>
+    <h2>O Caminho até o Moinho</h2>
+    <div class="ornament">✧</div>
+    <p>
+      O grupo partiu.
+    </p>
+    <p>
+      Vladric, Jhester, Nyx, Gondyr, Elyra, Eärendil, Brucisphildy, Pickman, Benedito e Kael tomaram a estrada rumo ao moinho. Mais tarde, Samael se juntaria a eles, carregando no pescoço a marca que ainda brilhava como um segredo recém-aceito.
+    </p>
+    <p>
+      O caminho seguia o curso de um riacho.
+    </p>
+    <p>
+      Primeiro veio a água.
+      Depois a mata.
+      E então o cheiro.
+    </p>
+    <p>
+      Sangue.
+    </p>
+    <p>
+      Não o sangue fresco de uma caça.
+      Não o sangue simples de violência recente.
+      Mas algo podre, espalhado, quase vivo.
+    </p>
+    <p>
+      A floresta parecia doente.
+    </p>
+    <p>
+      Cervos deformados surgiam entre as árvores, seus corpos retorcidos por uma corrupção úmida e pulsante. Havia neles algo de morto-vivo, algo de carne vazando para além da própria forma, como se o sangue tivesse decidido se rebelar contra o corpo que deveria obedecer.
+    </p>
+    <p>
+      O combate começou ali.
+    </p>
+    <p>
+      Tenso.
+      Pesado.
+      Cercado por uma aura de podridão que parecia contaminar o próprio ar.
+    </p>
+    <p>
+      E quando o grupo ainda se adaptava ao tipo de horror que enfrentava, surgiu uma criatura maior.
+    </p>
+    <p>
+      O Sanguevorador.
+    </p>
+    <p>
+      Durante um momento, foi fácil acreditar que aquela coisa era a origem de tudo.
+      O coração da praga.
+      O centro da ameaça.
+    </p>
+    <p>
+      Mas era cedo demais para respostas tão simples.
+    </p>
+  </article>
+
+  <article class="page">
+    <div class="chapter-tag">Imagem I</div>
+    <h2>A Floresta Corrompida</h2>
+    <div class="img-frame">
+      <img src="SEASON/s2p1i1.png" alt="Cervos corrompidos na floresta de sangue" />
+      <div class="caption">
+        A primeira visão real da corrupção de Sanguinaris em Prestoros: uma floresta rasgada pelo sangue,
+        cervos mutantes deformados entre as árvores e a sensação de que a própria natureza havia sido forçada
+        a beber algo que não pertencia a este mundo.
+      </div>
+    </div>
+    <p class="quote">
+      “A mata não estava apenas manchada. Ela estava sangrando.”
+    </p>
+  </article>
+</section>
+
+<section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Capítulo VI</div>
+    <h2>Nyx e a Primeira Vitória</h2>
+    <div class="ornament">✦</div>
+    <div class="dropcap">
+      <p>
+        Se alguém naquele grupo estava mais preparado do que os outros para encarar o sangue vivo de Sanguinaris, esse alguém era Nyx.
+      </p>
+      <p>
+        Não porque tivesse respostas para tudo.
+      </p>
+      <p>
+        Mas porque reconhecia a lógica do horror.
+      </p>
+      <p>
+        Sabia onde a carne falhava.
+        Sabia como a mutação se movia.
+        Sabia como o sangue pensa quando deixa de obedecer.
+      </p>
+      <p>
+        No meio do combate, foi ele quem mais desestabilizou o inimigo.
+      </p>
+      <p>
+        Seus ataques foram precisos, cirúrgicos, quase íntimos na forma como quebravam a monstruosidade da criatura. O grupo o seguiu, adaptou-se ao ritmo e, por fim, venceu.
+      </p>
+      <p>
+        O Sanguevorador caiu.
+      </p>
+      <p>
+        Mas a vitória não trouxe alívio pleno.
+      </p>
+      <p>
+        Estavam feridos.
+        Cansados.
+        Muitos mal tinham condição de prosseguir.
+      </p>
+      <p>
+        Foi então que, como uma faísca surgindo no lugar certo, uma fogueira começou a se formar.
+      </p>
+      <p>
+        E ao redor dela apareceu Caio.
+      </p>
+      <p>
+        O mesmo ajudante tiefling da taverna.
+      </p>
+      <p>
+        De algum modo, ali.
+      </p>
+      <p>
+        Tratando ferimentos.
+        Recolhendo o que restava de fôlego.
+        Mantendo vivos aqueles que, minutos antes, já começavam a aceitar que não conseguiriam continuar.
+      </p>
+      <p>
+        Alguns ficaram.
+        Outros seguiram.
+      </p>
+      <p>
+        E o moinho ainda os esperava.
+      </p>
+    </div>
+  </article>
+
+  <article class="page">
+    <div class="chapter-tag">Capítulo VII</div>
+    <h2>O Avanço</h2>
+    <div class="ornament">✧</div>
+    <p>
+      Revigorados o bastante para prosseguir, os aventureiros se aproximaram do moinho com mais cautela do que haviam tido no início da jornada.
+    </p>
+    <p>
+      A estratégia enfim apareceu.
+    </p>
+    <p>
+      Movimento controlado.
+      Aproximação calculada.
+      O tipo de postura que nasce quando um grupo começa a entender que sobreviver exige mais do que coragem.
+    </p>
+    <p>
+      Por algum tempo, aquilo funcionou.
+    </p>
+    <p>
+      O moinho se desenhava diante deles como o centro de uma infecção ritual, cercado por sinais de sangue, terra doente e a sensação constante de que havia algo observando de dentro da própria estrutura.
+    </p>
+    <p>
+      Então Gondyr decidiu avançar demais.
+    </p>
+    <p>
+      Se foi bravura, impulso ou idiotice, cada um julgou de um jeito.
+    </p>
+    <p>
+      O fato é que ele foi visto.
+    </p>
+    <p>
+      E, a partir dali, não houve mais silêncio.
+    </p>
+  </article>
+</section>
+
+<section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Imagem II</div>
+    <h2>O Sanguevorador Alfa</h2>
+    <div class="img-frame">
+      <img src="SEASON/s2p1i2.png" alt="Gondyr diante do Sanguevorador Alfa próximo ao moinho" />
+      <div class="caption">
+        O instante em que a aproximação calculada morre e a luta se impõe. Gondyr surge próximo demais,
+        o moinho domina o cenário e a forma do Sanguevorador Alfa transforma o campo num aviso de que a
+        verdadeira raiz da ameaça ainda não havia sido arrancada.
+      </div>
+    </div>
+    <p class="quote">
+      “Às vezes, um passo à frente basta para transformar estratégia em guerra.”
+    </p>
+  </article>
+
+  <article class="page">
+    <div class="chapter-tag">Capítulo VIII</div>
+    <h2>A Luta no Moinho</h2>
+    <div class="ornament">✦</div>
+    <p>
+      O Sanguevorador Alfa surgiu como uma versão mais brutal, mais antiga e mais consciente daquilo que já haviam enfrentado antes.
+    </p>
+    <p>
+      Não era apenas uma aberração grande.
+      Era liderança.
+      Era instinto elevado.
+      Era a podridão de Sanguinaris se tornando comando.
+    </p>
+    <p>
+      A luta foi árdua.
+    </p>
+    <p>
+      Cada erro custava caro.
+      Cada aproximação parecia arriscar não apenas a carne, mas a integridade do grupo.
+    </p>
+    <p>
+      Ainda assim, eles se mantiveram.
+    </p>
+    <p>
+      Com esforço.
+      Com dificuldade.
+      Com a soma torta e necessária de todas as habilidades que carregavam.
+    </p>
+    <p>
+      Gondyr permaneceu na linha de frente.
+      Mas Vladric dominiou a luta sendo peça decisiva.
+      Parecia que nem era o mesmo Vladric de sempre, parecia mais forte, mais determinado.
+      Os demais seguraram a estrutura da batalha com tudo o que ainda lhes restava.
+    </p>
+    <p>
+      E, por fim, com a magia de sangue de Vladric venceram.
+    </p>
+    <p>
+      O Alfa caiu.
+    </p>
+    <p>
+      O moinho foi purgado.
+    </p>
+    <p>
+      E pela primeira vez desde o início daquela missão, a sensação de encerramento parecia verdadeira.
+    </p>
+  </article>
+</section>
+
+<section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Imagem III</div>
+    <h2>A Queda do Alfa</h2>
+    <div class="img-frame">
+      <img src="SEASON/s2p1i3.png" alt="Derrota do Sanguevorador Alfa" />
+      <div class="caption">
+        O momento em que a violência finalmente se volta contra a própria monstruosidade. Sangue no ar,
+        impacto em movimento e a certeza de que aquela vitória exigiu mais do grupo do que qualquer combate
+        anterior desde a descida ao covil de Drakan.
+      </div>
+    </div>
+    <p class="quote">
+      “O sangue que caiu ali não encerrou apenas uma luta. Fechou um portal.”
+    </p>
+  </article>
+
+  <article class="page">
+    <div class="chapter-tag">Capítulo IX</div>
+    <h2>O Adeus a Valdris</h2>
+    <div class="ornament">✧</div>
+    <p>
+      O retorno à Taverna dos Errantes teve outro peso.
+    </p>
+    <p>
+      Desta vez, eles voltavam não apenas com feridas e dúvidas, mas com recompensa.
+    </p>
+    <p>
+      O trabalho havia sido concluído.
+      O perigo, ao menos naquela região, havia sido contido.
+    </p>
+    <p>
+      E o arco de Valdris começava a se fechar.
+    </p>
+    <p>
+      Entre pagamentos, descanso e o silêncio inevitável de quem percebe estar deixando um lugar importante para trás, surgiu o próximo chamado.
+    </p>
+    <p>
+      A praia.
+      O barco.
+      O horizonte.
+    </p>
+    <p>
+      Foi caminhando rumo ao mar que os aventureiros olharam para trás pela última vez.
+    </p>
+    <p>
+      Caio.
+      Torvak.
+      A taverna.
+      Tudo aquilo que, por um breve período, havia sido ponto de encontro, abrigo e começo.
+    </p>
+    <p>
+      E então a despedida veio sem grandes discursos.
+    </p>
+    <p class="quote">
+      Vamos para o Porto de Sangralia.
+    </p>
+    <p>
+      Era o fim da segunda sessão.
+    </p>
+    <p>
+      E também o fim de uma fase da campanha.
+    </p>
+  </article>
+</section>
+
+<section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Encerramento</div>
+    <h2>Fim da Sessão 2</h2>
+    <div class="ornament">✦</div>
+    <p>
+      A segunda sessão não foi apenas uma missão de transição.
+    </p>
+    <p>
+      Foi a primeira vez que o mundo revelou, com clareza, que a campanha não se limitaria aos reinos visíveis de Prestoros.
+    </p>
+    <p>
+      Sanguinaris entrou em cena.
+    </p>
+    <p>
+      Samael recebeu sua marca.
+    </p>
+    <p>
+      Vladric se tornou abrigo de algo ainda sem nome.
+    </p>
+    <p>
+      Nyx enfrentou um reflexo cruel do próprio sangue.
+    </p>
+    <p>
+      E o grupo inteiro percebeu que o caminho até Sangralia não seria apenas geográfico.
+    </p>
+    <p>
+      Seria também uma descida mais profunda rumo ao verdadeiro coração da campanha.
+    </p>
+    <div class="session-card">
+      <p><strong>Momentos marcados no livro:</strong></p>
+      <p>Imagem I — A Floresta Corrompida</p>
+      <p>Imagem II — O Sanguevorador Alfa</p>
+      <p>Imagem III — A Queda do Alfa</p>
+      <p>Imagem IV — O Novo Benedito</p>
+    </div>
+  </article>
+
+  <article class="page">
+    <div class="chapter-tag">Gancho</div>
+    <h2>Rumo ao Porto de Sangralia</h2>
+    <p class="quote">
+      “Valdris ficou para trás. O mar vinha adiante. E com ele, tudo aquilo que ainda não tinha rosto.”
+    </p>
+    <div class="img-frame">
+      <img src="CAPAS/PHONE WALLPAPER 11.png" alt="Farol" />
+    </div>
+  </article>
+</section>
+
+    </div>
+
+    <div class="footer-note">
+      Página criada em estilo de livro antigo para registrar a campanha de Prestoros.
+    </div>
+  </main>
+
+    <script>
+      const sections = document.querySelectorAll("section[id], main[id]");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      const setActiveLink = () => {
+        let currentId = "inicio";
+
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 160 && rect.bottom >= 160) {
+            currentId = section.id;
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.toggle(
+            "active",
+            link.getAttribute("href") === "#" + currentId
+          );
+        });
+      };
+
+      window.addEventListener("scroll", setActiveLink, { passive: true });
+      window.addEventListener("load", setActiveLink);
+    </script>
+  </body>
+</html>
