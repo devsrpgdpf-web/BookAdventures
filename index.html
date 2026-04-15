@@ -31,6 +31,10 @@
     body {
   overflow-x: hidden;
   }
+  html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  }
     body {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
@@ -137,6 +141,36 @@
 }
 
 /* CELULAR */
+@media (max-width: 768px) {
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 10vw, 3.6rem);
+    line-height: 0.95;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 92%;
+    margin: 0 auto 20px;
+  }
+
+  .btn {
+    max-width: 260px;
+    padding: 12px 18px;
+    font-size: 1rem;
+  }
+
+  .top-menu a {
+    font-size: 0.9rem;
+    padding: 10px 14px;
+    min-width: 110px;
+  }
+}
 @media (max-width: 768px) {
   .hero::before {
     background: url("CAPAS/PHONE WALLPAPER 14.png") center center / cover no-repeat;
