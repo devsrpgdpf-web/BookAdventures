@@ -534,11 +534,11 @@
       margin-top: 18px;
     }
 
-    .columns {
-      column-count: 2;
-      column-gap: 40px;
-      text-align: justify;
-    }
+   .columns {
+  column-count: 1;
+  column-gap: 0;
+  text-align: justify;
+}
 
     .columns p {
       break-inside: avoid;
@@ -864,6 +864,107 @@
     line-height: 1.72 !important;
   }
 }
+/* ========================= */
+/* SUBMENU DO MENU */
+/* ========================= */
+
+.menu-item {
+  position: relative;
+  display: inline-block;
+  pointer-events: auto;
+}
+
+.nav-like {
+  position: relative;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--gold-soft);
+  background: var(--menu-bg);
+  color: #f1dfbf;
+  font-size: .95rem;
+  font-weight: 600;
+  font-family: Georgia, "Times New Roman", serif;
+  box-shadow: 0 8px 20px rgba(0,0,0,.18);
+  transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease, color .25s ease;
+  cursor: pointer;
+}
+
+.nav-like:hover {
+  background: var(--menu-bg-hover);
+  transform: translateY(-2px);
+  border-color: rgba(215,181,122,.6);
+  box-shadow: 0 14px 24px rgba(0,0,0,.28);
+}
+
+.menu-item.open .nav-like {
+  background: var(--menu-active);
+  border-color: rgba(215,181,122,.72);
+  color: #fff1d6;
+  box-shadow: 0 10px 26px rgba(0,0,0,.34);
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 240px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 10px;
+  border-radius: 16px;
+  background: rgba(18, 10, 6, 0.96);
+  border: 1px solid rgba(215,181,122,.28);
+  box-shadow: 0 18px 35px rgba(0,0,0,.35);
+  z-index: 10000;
+}
+
+.menu-item.open .submenu {
+  display: block;
+}
+
+.submenu a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: .92rem;
+  color: #f1dfbf;
+  text-align: left;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.submenu a:hover {
+  background: rgba(123,47,29,.35);
+  transform: translateX(2px);
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .menu-item {
+    width: 100%;
+  }
+
+  .nav-like {
+    width: 100%;
+    text-align: center;
+  }
+
+  .submenu {
+    position: static;
+    transform: none;
+    min-width: 100%;
+    max-height: none;
+    margin-top: 8px;
+    border-radius: 18px;
+    background: rgba(15, 8, 5, 0.72);
+    box-shadow: inset 0 0 0 1px rgba(215,181,122,.18);
+  }
+
+  .submenu a {
+    text-align: center;
+  }
+}
   </style>
 </head>
 <body>
@@ -876,10 +977,35 @@
   <nav class="top-menu" id="mobileMenu">
     <a href="#inicio" class="nav-link active">Capa</a>
     <a href="#prologo" class="nav-link">Prólogo</a>
-    <a href="#personagens" class="nav-link">Personagens</a>
-    <a href="#cronica" class="nav-link">Crônica</a>
+
+    <div class="menu-item has-submenu">
+      <button class="submenu-toggle nav-like" type="button">Personagens</button>
+      <div class="submenu">
+        <a href="#elyra">Elyra</a>
+        <a href="#nyx">Nyx</a>
+        <a href="#gondyr">Gondyr</a>
+        <a href="#pickman">Pickman</a>
+        <a href="#kael">Kael</a>
+        <a href="#vladric">Vladric</a>
+        <a href="#earendil">Eärendil</a>
+        <a href="#brucisphildy">Brucisphildy</a>
+        <a href="#jhester">Jhester</a>
+        <a href="#samael">Samael</a>
+        <a href="#benedito">Benedito</a>
+      </div>
+    </div>
+
+    <a href="#historia-antiga" class="nav-link">História</a>
     <a href="#mapa" class="nav-link">Mapa</a>
-    <a href="#sessao1" class="nav-link">Sessões</a>
+
+    <div class="menu-item has-submenu">
+      <button class="submenu-toggle nav-like" type="button">Sessões</button>
+      <div class="submenu">
+        <a href="#sessao1">Sessão 1</a>
+        <a href="#sessao2">Sessão 2</a>
+        <a href="#sessao3">Sessão 3</a>
+      </div>
+    </div>
   </nav>
 </div>
 
@@ -912,7 +1038,7 @@
   <main class="book-shell" id="livro">
     <div class="book">
 
-      <section class="spread reveal" id="personagens">
+      <section class="spread reveal" id="elyra">
         <article class="page">
           <div class="chapter-tag">Registro de Personagem</div>
           <h2>Elyra Vhal’zeth</h2>
@@ -1040,7 +1166,7 @@
         </article>
       </section>
 
-      <section class="spread reveal">
+      <section class="spread reveal" id="nyx">
         <article class="page">
           <div class="chapter-tag">Registro de Personagem</div>
           <h2>Nyx Bloodshade</h2>
@@ -1136,7 +1262,7 @@
         </article>
       </section>
 
-      <section class="spread reveal">
+      <section class="spread reveal" id="gondyr">
         <article class="page">
           <div class="chapter-tag">Registro de Personagem</div>
           <h2>Gondyr Gonner</h2>
@@ -1255,7 +1381,7 @@
         </article>
       </section>
 
-      <section class="spread reveal">
+      <section class="spread reveal" id="pickman">
         <article class="page">
           <div class="chapter-tag">Registro de Personagem</div>
           <h2>Akeley Pickman</h2>
@@ -1343,7 +1469,7 @@
         </article>
       </section>
 
-       <section class="spread reveal">
+       <section class="spread reveal" id="kael">
   <article class="page">
     <div class="chapter-tag">Registro de Personagem</div>
     <h2>Kael Varyn</h2>
@@ -1539,7 +1665,7 @@
     </p>
   </article>
 </section>
-    <section class="spread reveal">
+    <section class="spread reveal" id="vladric">
   <article class="page">
     <div class="chapter-tag">Registro de Personagem</div>
     <h2>Vladric Valek</h2>
@@ -1769,7 +1895,7 @@
     </p>
   </article>
 </section>
-    <section class="spread reveal">
+    <section class="spread reveal" id="earendil">
   <article class="page">
     <div class="chapter-tag">Registro de Personagem</div>
     <h2>Eärendil Starwhisper</h2>
@@ -2027,7 +2153,7 @@
     </p>
   </article>
 </section>
-      <section class="spread reveal">
+      <section class="spread reveal" id="brucisphildy">
   <article class="page">
     <div class="chapter-tag">Registro de Personagem</div>
     <h2>Brucisphildy</h2>
@@ -2289,7 +2415,7 @@
     </p>
   </article>
 </section>
-    <section class="spread reveal">
+    <section class="spread reveal" id="jhester">
   <article class="page">
     <div class="chapter-tag">Registro de Personagem</div>
     <h2>Jhester Veraryth</h2>
@@ -2622,7 +2748,7 @@
     </p>
   </article>
 </section>
-    <section class="spread reveal">
+    <section class="spread reveal" id="samael">
   <article class="page">      
     <div class="chapter-tag">Registro de Personagem</div>
     <h2>Samael Aurelion</h2>
@@ -2955,7 +3081,7 @@
     </p>
   </article>
 </section>
-    <section class="spread reveal">
+    <section class="spread reveal" id="benedito">
   <article class="page">
     <div class="chapter-tag">Registro de Personagem</div>
     <h2>Benedito Bostaros II</h2>
@@ -3438,6 +3564,281 @@
       “Ele saiu em busca de glória. Encontrou primeiro a sombra daquilo que jurou vencer.”
     </p>
   </article>
+</section>
+
+<section class="spread reveal" id="historia-antiga">
+  <article class="page">
+    <div class="chapter-tag">Crônicas Antigas</div>
+    <h2>A Antiga Guerra dos Sete Reinos</h2>
+    <div class="ornament">✦</div>
+
+    <p class="quote">
+      “Antes da era atual, Prestoros já esteve à beira do fim.”
+    </p>
+
+    <div class="dropcap">
+      <p>
+        Antes da era atual, existiu um período que hoje sobrevive apenas em lendas quebradas,
+        crônicas incompletas e registros que muitos reinos prefeririam ver apagados.
+      </p>
+
+      <p>
+        Essa época ficou conhecida como o Inverno Longo.
+      </p>
+
+      <p>
+        Há cerca de novecentos anos, algo despertou além das terras mais ao norte do mundo conhecido.
+      </p>
+
+      <p>
+        Não era um reino. Não era um exército. E tampouco uma invasão comum.
+      </p>
+
+      <p>
+        Era algo pior.
+      </p>
+
+      <p>
+        Os cronistas sobreviventes chamaram aquela ameaça de Espectros da Lua.
+      </p>
+
+      <p>
+        Das regiões congeladas começaram a surgir horrores que nenhum povo havia registrado antes:
+        criaturas feitas de gelo e sombra, gigantes deformados, dragões negros selvagens
+        e mortos que caminhavam como se a própria noite lhes concedesse vontade.
+      </p>
+
+      <p>
+        Vilarejos desapareceram. Cidades inteiras foram engolidas pelo gelo.
+        Reinos antigos foram apagados antes mesmo que seus nomes pudessem ser preservados.
+      </p>
+
+      <p>
+        A guerra contra a escuridão durou quase quarenta anos.
+      </p>
+
+      <p>
+        Durante boa parte desse tempo, os sete reinos humanos e élficos continuaram lutando entre si,
+        cegos por orgulho, ambição e disputas de poder, enquanto o norte avançava lentamente
+        em direção ao coração do continente.
+      </p>
+
+      <p>
+        Parecia inevitável que Prestoros seria consumido.
+      </p>
+
+      <p>
+        Então, quando os reis falharam e os exércitos não bastaram, surgiu um pequeno grupo.
+      </p>
+
+      <p>
+        Não eram soberanos. Não eram generais. Não pertenciam a uma única bandeira.
+      </p>
+
+      <p>
+        Eram apenas aventureiros.
+      </p>
+
+      <p>
+        Mas seus nomes atravessaram os séculos.
+      </p>
+
+      <p>
+        As crônicas os chamam de Companhia da Aurora.
+      </p>
+
+      <p>
+        Eram sete heróis, vindos de diferentes terras, diferentes raças e diferentes destinos,
+        unidos por um único propósito: conter a escuridão que vinha do norte.
+      </p>
+
+      <p>
+        Aldric, o Portador da Chama, liderava o grupo com a lendária espada Solaris,
+        cuja luz era dita capaz de ferir as criaturas da noite.
+      </p>
+
+      <p>
+        Seraphine, a Maga das Estrelas, dominava feitiços antigos e conhecimentos cósmicos
+        anteriores à fundação dos reinos atuais.
+      </p>
+
+      <p>
+        Bramm Martelo-de-Ferro, anão das montanhas, foi lembrado como destruidor de gigantes
+        e senhor de um martelo rúnico capaz de quebrar armaduras como vidro.
+      </p>
+
+      <p>
+        Kazal Drakssil, elfo sombrio e mestre da infiltração, foi o responsável por descobrir
+        onde se escondia o verdadeiro centro da ameaça.
+      </p>
+
+      <p>
+        Zathiros, o Domador de Dragões, realizou o impossível ao conquistar a aliança
+        do colossal Azhuriel, uma criatura descrita nas lendas como um eclipse vivo.
+      </p>
+
+      <p>
+        Lyra da Floresta Antiga falava com os espíritos primordiais da natureza
+        e convenceu forças ancestrais da terra a lutar ao lado da vida.
+      </p>
+
+      <p>
+        E Orik, o Caçador do Norte, conhecia os caminhos soterrados pelo gelo —
+        sendas que não existiam em mapa algum e que sem ele jamais teriam levado os heróis
+        até o coração da escuridão.
+      </p>
+
+      <p>
+        Guiados por Orik, os sete atravessaram desertos congelados, montanhas mortas
+        e cidades destruídas pelo inverno eterno, até chegarem a uma fortaleza mais antiga
+        do que qualquer reino ainda vivo.
+      </p>
+
+      <p>
+        Seu nome era Thar-Vhalgor, a Cidadela da Noite Eterna.
+      </p>
+
+      <p>
+        Ali residia o ser responsável por comandar os Espectros da Lua,
+        uma entidade tão antiga que nem os elfos ousaram preservar seu verdadeiro nome.
+      </p>
+
+      <p>
+        Nos registros sobreviventes, ela é citada apenas como algo que foi selado — nunca destruído.
+      </p>
+
+      <p>
+        A batalha final foi tão violenta que destruiu a própria cidade.
+        Dragões caíram dos céus, muralhas foram despedaçadas e magias rasgaram
+        o tecido da realidade.
+      </p>
+
+      <p>
+        Quando tudo terminou, Thar-Vhalgor estava em ruínas.
+        Boa parte da Companhia havia desaparecido.
+        Mas o mal foi selado.
+      </p>
+
+      <p>
+        Não vencido. Selado.
+      </p>
+
+      <p>
+        Com o passar dos séculos, os reinos voltaram a guerrear entre si.
+        A história da Companhia da Aurora tornou-se lenda.
+      </p>
+
+      <p>
+        Alguns dizem que nada disso aconteceu.
+        Outros afirmam que a verdade foi escondida pelos próprios reis.
+      </p>
+
+      <p>
+        Mas, nas terras congeladas do norte, ainda existem rumores.
+      </p>
+    </div>
+  </article>
+
+  <article class="page">
+    <div class="chapter-tag">Os Sete Heróis</div>
+    <h2>A Companhia da Aurora</h2>
+    <div class="ornament">✧</div>
+
+    <div class="session-card">
+      <p><strong>1. Aldric, o Portador da Chama</strong> — paladino humano e líder da Companhia, portador da espada Solaris.</p>
+      <p><strong>2. Seraphine, a Maga das Estrelas</strong> — arquimaga alta-elfa, senhora de feitiços perdidos e do saber cósmico.</p>
+      <p><strong>3. Bramm Martelo-de-Ferro</strong> — guerreiro anão, destruidor de gigantes e mártir do cerco final.</p>
+      <p><strong>4. Kazal Drakssil</strong> — elfo sombrio, espião e assassino, desaparecido após a batalha de Thar-Vhalgor.</p>
+      <p><strong>5. Zathiros, o Domador de Dragões</strong> — cavaleiro dracônico que lutou ao lado de Azhuriel, o eclipse vivo.</p>
+      <p><strong>6. Lyra da Floresta Antiga</strong> — druida primordial que ergueu a própria natureza contra o inverno eterno.</p>
+      <p><strong>7. Orik, o Caçador do Norte</strong> — bárbaro das terras geladas que guiou a Companhia além da muralha de gelo.</p>
+    </div>
+
+    <p>
+      Cada reino preservou uma versão diferente da lenda.
+      Em algumas, os sete são lembrados como santos.
+      Em outras, como tolos gloriosos que ousaram desafiar algo maior do que o próprio mundo.
+    </p>
+
+    <p>
+      O que todas as versões têm em comum, porém, é o mesmo desfecho:
+      sem a Companhia da Aurora, Prestoros teria desaparecido sob a neve,
+      a sombra e a fome dos mortos.
+    </p>
+
+    <div class="img-frame">
+      <div class="caption">
+        Os nomes sobreviveram, mas os destinos não. Alguns morreram em batalha.
+        Outros desapareceram. E alguns, segundo rumores, talvez jamais tenham deixado
+        completamente as fronteiras do norte.
+      </div>
+    </div>
+
+    <p class="quote">
+      “Quando os reis falharam, foram os errantes que salvaram o mundo.”
+    </p>
+  </article>
+</section>
+
+<section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Atlas Antigo</div>
+    <h2>O Continente de Prestoros</h2>
+    <div class="ornament">✦</div>
+
+    <p>
+      Prestoros é um continente antigo, moldado por guerra, magia esquecida e pactos quebrados.
+      Antes da ascensão do Trono Rubro, os reinos eram independentes, orgulhosos
+      e governados por Casas ancestrais.
+    </p>
+
+    <p>
+      No centro do continente ergue-se Sangrália, capital imperial construída sobre uma antiga falha vulcânica.
+      Suas muralhas avermelhadas são ditas misturadas a sangue de dragão petrificado,
+      e no alto da Colina Rubra se ergue a Fortaleza Carmesim.
+    </p>
+
+    <p>
+      É dali que governa Maelor IV, o Incandescente — um rei cruel, paranoico e brilhante,
+      responsável por eliminar linhagens reais inteiras para unificar Prestoros sob seu domínio.
+    </p>
+
+    <div class="session-card">
+      <p><strong>Capital Imperial:</strong> Sangrália</p>
+      <p><strong>Palácio:</strong> Fortaleza Carmesim</p>
+      <p><strong>Soberano:</strong> Rei Maelor IV, o Incandescente</p>
+    </div>
+
+    <p>
+      Ao redor da capital, os grandes reinos ainda respiram sob suas próprias bandeiras,
+      brasões e tradições, mesmo quando dobrados ao peso da coroa.
+    </p>
+  </article>
+
+  <article class="page">
+    <div class="chapter-tag">Grandes Reinos</div>
+    <h2>Casas, Terras e Lemas</h2>
+    <div class="ornament">✧</div>
+
+    <div class="img-frame">
+      <div class="caption">
+        <strong>Valtherion</strong> — reino do norte congelado, governado pela Casa Dravenhal. <em>“O Frio Nunca Esquece.”</em><br><br>
+        <strong>Sylvara</strong> — domínio élfico das florestas antigas, sob a Casa Vaelorian. <em>“Raízes São Eternas.”</em><br><br>
+        <strong>Khar-Dum</strong> — montanhas de ferro dos anões, erguidas pela Casa Thargrimm. <em>“Pedra Quebra, Nós Não.”</em><br><br>
+        <strong>Voragh</strong> — terra de orcs e meio-orcs, dominada pela Casa Kharzug. <em>“A Guerra é Verdade.”</em><br><br>
+        <strong>Astraven</strong> — reino marítimo de humanos e tritões, regido pela Casa Velaryth. <em>“As Marés Sempre Retornam.”</em><br><br>
+        <strong>Lunaris</strong> — centro arcano de Prestoros, sob a Casa Noctheris. <em>“O Conhecimento Custa.”</em><br><br>
+        <strong>Thal’Zar</strong> — deserto eterno dos dragonborn e híbridos, pela Casa Azrakar. <em>“Sob o Sol, Apenas os Fortes.”</em><br><br>
+        <strong>Dorian</strong> — reino envolto em necromancia, regido pela Casa Morvane. <em>“A Morte Observa.”</em><br><br>
+        <strong>Caelmyr</strong> — ilhas tempestuosas de meio-elfos e aasimar, sob a Casa Stormeir. <em>“Nós Somos a Tempestade.”</em>
+      </div>
+    </div>
+
+    <p class="quote">
+      “Os reinos esqueceram. O norte, não.”
+    </p>
+  </article>
+</section>
 </section>
       <section class="spread reveal" id="mapa">
         <article class="page">
@@ -4580,6 +4981,39 @@
       });
     });
   }
+
+  const submenuButtons = document.querySelectorAll(".submenu-toggle");
+  const menuItems = document.querySelectorAll(".menu-item");
+
+  submenuButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const parent = btn.closest(".menu-item");
+
+      menuItems.forEach((item) => {
+        if (item !== parent) {
+          item.classList.remove("open");
+        }
+      });
+
+      parent.classList.toggle("open");
+    });
+  });
+
+  document.addEventListener("click", () => {
+    menuItems.forEach((item) => item.classList.remove("open"));
+  });
+
+  document.querySelectorAll(".submenu a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menuItems.forEach((item) => item.classList.remove("open"));
+
+      if (window.innerWidth <= 768 && mobileMenu && mobileMenuToggle) {
+        mobileMenu.classList.remove("open");
+        mobileMenuToggle.textContent = "☰ Menu";
+      }
+    });
+  });
 </script>
   </body>
 </html>
