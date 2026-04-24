@@ -965,6 +965,15 @@
     text-align: center;
   }
 }
+.spread.full {
+  display: block;
+}
+
+.spread.full .page {
+  width: 100%;
+  max-width: 900px; /* opcional pra não esticar demais */
+  margin: 0 auto;
+}
   </style>
 </head>
 <body>
@@ -1902,7 +1911,7 @@
     <div class="ornament">✦</div>
 
     <div class="session-card">
-      <p><strong>Raça:</strong> Meio-Elfo</p>
+      <p><strong>Raça:</strong> Elfo</p>
       <p><strong>Classe:</strong> Guerreiro</p>
       <p><strong>Título:</strong> O Herdeiro das Crônicas</p>
     </div>
@@ -3839,64 +3848,6 @@
     </p>
   </article>
 </section>
-
-      <section class="spread reveal" id="mapa">
-        <article class="page">
-          <div class="chapter-tag">Atlas de Prestoros</div>
-          <h2>Mapa</h2>
-          <div class="ornament">✦</div>
-          <div class="img-frame">
-            <img src="MAPA/image.png" alt="Mapa" />
-          </div>
-        </article>
-
-        <article class="page" id="npc-importante">
-          <div class="chapter-tag">Registro Narrativo</div>
-          <h2>NPCs Importantes Sessão 1</h2>
-          <div class="ornament">✦</div>
-
-          <div class="session-card">
-            <p><strong>Nome:</strong> Thalgar</p>
-            <p><strong>Título:</strong> Dragonslayer</p>
-          </div>
-
-          <p class="quote">
-            “É melhor vocês partirem. Se ficarem, eu chamarei vocês de tolos.”
-          </p>
-
-          <div class="img-frame">
-            <img src="NPC/Thalgar.png" alt="Thalgar" />
-          </div>
-        </article>
-      </section>
-
-      <section class="spread reveal" id="locais-importantes">
-        <article class="page">
-          <div class="chapter-tag">Legenda</div>
-          <h2>Locais Importantes Sessão 1</h2>
-          <div class="ornament">✧</div>
-          <div class="session-card">
-            <p><strong>Exemplos:</strong></p>
-            <p>• Taverna dos Errantes</p>
-            <p>• Covil de Drakan</p>
-          </div>
-        </article>
-
-        <article class="page">
-          <div class="chapter-tag">Registro Narrativo</div>
-          <h2>NPCs Importantes Sessão 1</h2>
-          <div class="ornament">✦</div>
-          <div class="session-card">
-            <p><strong>Nome:</strong> Caio</p>
-            <p><strong>Título:</strong> Ajudande da Taverna dos Errantes</p>
-          </div>
-          <p class="quote">“🖕🏻”</p>
-          <div class="img-frame">
-            <img src="NPC/caio.png" alt="Caio" />
-          </div>
-        </article>
-      </section>
-
       <section class="spread reveal" id="sessao1">
         <article class="page">
           <div class="chapter-tag">Crônicas de Prestoros</div>
@@ -3925,7 +3876,6 @@
           </div>
         </article>
       </section>
-
       <section class="spread reveal">
         <article class="page">
           <div class="chapter-tag">Capítulo I</div>
@@ -3941,8 +3891,35 @@
             <p>A briga quase explodiu no meio da taverna. Mas antes que aquilo virasse aço, magia e sangue, Melicent começou a cantar. Conforme sua voz preenchia o ambiente, anéis de fogo surgiam sob seus pés a cada batida no chão. A magia de amizade se espalhou pelo salão. O conflito se dissolveu antes de nascer. Em vez de brigarem, todos acabaram prestando atenção à música. E, depois que a tensão baixou, uma verdade simples emergiu: todos ali estavam pelo mesmo motivo. Missões. Dinheiro. Propósito.</p>
           </div>
         </article>
+        
+          <article class="page">
+    <div class="chapter-tag">NPC I</div>
+    <h2>Caio o Ajudante</h2>
 
+    <div class="img-frame">
+      <img src="NPC/caio.png" alt="Título" />
+      <div class="caption">
+        Um tiefling de olhar afiado e sorriso torto, sempre coberto de fuligem, bebida barata e más intenções leves o suficiente pra não virar crime… quase. Seus chifres curvados e olhos âmbar brilham mais de deboche do que de ameaça.
+      </div>
+    </div>
+  </article>
+      </section>
+
+      
+         <section class="spread reveal">
         <article class="page">
+     <div class="chapter-tag">NPC II</div>
+    <h2>O Dragon Slayer</h2>
+   
+
+    <div class="img-frame">
+      <img src="NPC/Thalgar.png" alt="Título" />
+      <div class="caption">
+Forjado em guerras que esmagariam exércitos inteiros, ele caminha onde dragões caem. Sua lâmina, marcada por runas antigas, não apenas corta carne — ela carrega o peso de criaturas lendárias que já desafiaram o mundo… </div>
+    </div>
+        </article>
+        
+         <article class="page">
           <div class="chapter-tag">Capítulo II</div>
           <h2>A Chegada de Thalgar</h2>
           <div class="ornament">✦</div>
@@ -5392,7 +5369,7 @@
 </section>
 <section class="spread reveal">
   <article class="page">
-    <div class="chapter-tag">Cena</div>
+    <div class="chapter-tag">Imagem</div>
     <h2>Gooner sendo Gonner</h2>
     <div class="ornament">✦</div>
 
@@ -5406,7 +5383,7 @@ Ao fundo, Benedito observa a cena com um misto de incredulidade e diversão cont
   </article>
 
    <article class="page">
-    <div class="chapter-tag">Cena 2</div>
+    <div class="chapter-tag">Imagem II</div>
     <h2>O Dançar das Pétalas</h2>
     <div class="ornament">✦</div>
 
@@ -5419,7 +5396,772 @@ Pétalas vermelhas dançam ao redor da figura, carregadas por um vento que não 
     </div>
   </article>
 </section>
+<section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Capítulo IX</div>
+    <h2>O Chamado de Nymara</h2>
+    <div class="ornament">✦</div>
 
+    <div class="dropcap">
+      <p>
+        Os aventureiros que ficaram sem ir nas docas se reuniram perto da taverna, esperando que a noite enfim caísse sobre Sangralia.
+      </p>
+
+      <p>
+        Mas, antes que todos seguissem o mesmo caminho, Eärendil se afastou em busca de conhecimento. Seu destino foi o Templo de Vasskar, um pequeno santuário dedicado à harmonia das águas.
+      </p>
+
+      <p>
+        Elyra, atenta demais para ignorar uma ausência, percebeu sua partida e o seguiu.
+      </p>
+
+      <p>
+        Ao chegar ao templo, Eärendil encontrou um lugar diferente da ruína que muitos descreviam. O som relaxante de um riacho próximo se misturava ao canto suave de fiéis em oração. Incensos aquáticos exalavam um perfume leve de algas e maresia, enquanto raios de luz atravessavam os vitrais azulados, projetando reflexos ondulados no chão de mármore.
+      </p>
+
+      <p>
+        No centro do salão, uma tritã de pele azul-esverdeada e longos cabelos perolados os aguardava. Suas túnicas fluidas lembravam o movimento das marés, e seu sorriso, embora acolhedor, carregava uma preocupação difícil de esconder.
+      </p>
+
+      <p class="quote">
+        “Meu nome é Nymara. Sou a sacerdotisa responsável pelo templo.”
+      </p>
+
+      <p>
+        Ela não tinha ouro. Não prometeu glória. Pediu apenas respeito pelo que era sagrado.
+      </p>
+
+      <p>
+        Vândalos costumavam atacar ao anoitecer, profanando o templo, quebrando símbolos e espalhando medo entre os fiéis. Nymara pediu ajuda a Eärendil, e ele, já tocado pela causa, aceitou ouvi-la.
+      </p>
+
+      <p>
+        Quando Elyra chegou, a sacerdotisa percebeu algo estranho nela. Algo escuro. Algo que talvez outro sacerdote teria temido.
+      </p>
+
+      <p>
+        Mas, naquele momento, nada mais importava.
+      </p>
+
+      <p>
+        Nymara pediu sua ajuda também.
+      </p>
+
+      <p>
+        E Elyra aceitou.
+      </p>
+    </div>
+  </article>
+
+  <article class="page">
+    <div class="chapter-tag">NPC I</div>
+    <h2>A Sacerdotisa das Marés</h2>
+    <div class="ornament">✧</div>
+
+    <div class="img-frame">
+      <img src="NPC/nymara.png" alt="Nymara no Templo de Vasskar" />
+      <div class="caption">
+        No coração do Templo de Vasskar, Nymara ora sob a luz azulada dos vitrais partidos. Seu semblante carrega serenidade, mas também medo. Ela não defende apenas um prédio antigo, mas a última chama de fé de um lugar que Sangralia parece ter escolhido esquecer.
+      </div>
+    </div>
+
+    <p class="quote">
+      “Nem todo pedido de ajuda vem de quem ainda acredita que será salvo.”
+    </p>
+  </article>
+</section>
+
+<section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Capítulo X</div>
+    <h2>O Olho de Gooner</h2>
+    <div class="ornament">✦</div>
+
+    <div class="dropcap">
+      <p>
+        Enquanto Eärendil e Elyra lidavam com o pedido de Nymara, outro grupo deixou a taverna em busca de acesso definitivo ao Mercado Negro.
+      </p>
+
+      <p>
+        Nyx, Jhester, Benedito, Gooner e Pickman voltaram às docas com uma missão simples: entrar onde não deveriam.
+      </p>
+
+      <p>
+        Antes disso, porém, Jhester resolveu demonstrar seus supostos talentos de patrulheiro.
+      </p>
+
+      <p>
+        Gooner, sem pensar duas vezes, decidiu testar o “reizinho”. Pegou outro rato, desta vez com uma delicadeza quase absurda para alguém como ele, colocou o animal sobre a própria cabeça e disse apenas:
+      </p>
+
+      <p class="quote">
+        “Vai.”
+      </p>
+
+      <p>
+        Jhester armou a besta.
+      </p>
+
+      <p>
+        Não pensou.
+      </p>
+
+      <p>
+        Atirou.
+      </p>
+
+      <p>
+        Por um instante, tudo foi sangue, escuridão e a sensação terrível de que algo havia apagado metade do mundo.
+      </p>
+
+      <p>
+        O virote atravessou o olho direito de Gooner.
+      </p>
+
+      <p>
+        O anão arrancou o próprio olho ferido e o lançou ao mar, dizendo que não precisava dele.
+      </p>
+
+      <p>
+        Arrependeu-se quase no mesmo instante, ao ver um peixe-espada engolir o olho e desaparecer nas águas.
+      </p>
+
+      <p>
+        O silêncio que veio depois dizia tudo.
+      </p>
+
+      <p>
+        Foi Nyx quem quebrou o momento, seco e prático como sempre.
+      </p>
+
+      <p class="quote">
+        “Deve ter olhos no Mercado Negro. Fique esperto.”
+      </p>
+    </div>
+  </article>
+
+  <article class="page">
+    <div class="chapter-tag">Imagem III</div>
+    <h2>O Teste do Reizinho</h2>
+    <div class="ornament">✧</div>
+
+    <div class="img-frame">
+      <img src="SEASON/s3p1i3.png" alt="Gooner ferido após o disparo de Jhester" />
+      <div class="caption">
+        O momento em que uma provocação idiota se transforma em mutilação real. Gooner, com o virote atravessando seu olho, encara o resultado da própria ideia enquanto Jhester compreende tarde demais que confiança e competência nem sempre caminham juntas.
+      </div>
+    </div>
+
+    <p class="quote">
+      “Algumas ideias nascem ruins. Outras apenas precisam de uma besta carregada.”
+    </p>
+  </article>
+</section>
+
+<section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Imagem IV</div>
+    <h2>Spike Liberti</h2>
+    <div class="ornament">✧</div>
+
+    <div class="img-frame">
+      <img src="NPC/spike.png" alt="Spike Liberti no Mercado Negro" />
+      <div class="caption">
+        Spike Liberti surge entre mercadorias ilegais, lanternas trêmulas e promessas sussurradas. O cabelo verde denuncia um laço que ele tenta esconder com desprezo. No Mercado Negro, amor é fraqueza. Por isso, ao falar de Thalgar, Spike veste ódio como armadura.
+      </div>
+    </div>
+
+    <p class="quote">
+      “Algumas famílias não se rompem. Apenas aprendem a sangrar em silêncio.”
+    </p>
+  </article>
+  <article class="page">
+    <div class="chapter-tag">Capítulo XI</div>
+    <h2>A Porta de Ferro se Abre</h2>
+    <div class="ornament">✦</div>
+
+    <div class="dropcap">
+      <p>
+        Ao anoitecer, o grupo voltou a se dividir.
+      </p>
+
+      <p>
+        Aqueles que seguiam para o Mercado Negro carregavam identidades falsas nas mãos. Algumas haviam sido compradas de forma suspeita. Outras, roubadas. Nenhuma delas parecia exatamente segura.
+      </p>
+
+      <p>
+        Ainda assim, eram o bastante.
+      </p>
+
+      <p>
+        A porta de ferro se abriu.
+      </p>
+
+      <p>
+        O ar que veio de dentro era úmido, pesado e impregnado por cheiros que não deveriam ocupar o mesmo espaço: carne velha, especiarias raras, fumaça amarga, perfumes doces demais e medo humano.
+      </p>
+
+      <p>
+        Ali estava o Mercado Negro do Porto de Sangralia.
+      </p>
+
+      <p>
+        Gooner foi imediatamente atrás de um novo olho. Entre barracas improvisadas, lanternas tremeluzentes e vendedores de coisas impossíveis, ele revirava oportunidades como se escolhesse frutas em uma feira comum.
+      </p>
+
+      <p>
+        Nyx, porém, encontrou algo mais interessante.
+      </p>
+
+      <p>
+        Um mercador de presença estranhamente familiar, mas não idêntica a ninguém que conheciam.
+      </p>
+
+      <p class="quote">
+        “Procura algo impossível? Talvez eu tenha.”
+      </p>
+
+      <p>
+        O homem se chamava Spike Liberti.
+      </p>
+
+      <p>
+        Cabelos verdes. Aparência mais velha. Olhar de quem já havia perdido demais para se permitir demonstrar qualquer coisa.
+      </p>
+
+      <p>
+        Quando Nyx mostrou a capa encontrada nos escombros depois da descida de Thalgar ao Covil de Drakan, Spike reconheceu o tecido.
+      </p>
+
+      <p>
+        Era de seu irmão.
+      </p>
+
+      <p>
+        Thalgar.
+      </p>
+    </div>
+  </article>
+</section>
+
+<section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Capítulo XII</div>
+    <h2>O Irmão do Dragon Slayer</h2>
+    <div class="ornament">✦</div>
+
+    <p>
+      Spike deixou claro que odiava Thalgar.
+    </p>
+
+    <p>
+      Disse que o irmão havia trocado a família por poder. Que se juntara aos Dragon Slayers, um grupo onde a diferença entre bons e maus não importava tanto quanto a força. Para Spike, Thalgar não estava mais vivo em nenhum sentido que importasse.
+    </p>
+
+    <p>
+      As palavras eram duras.
+    </p>
+
+    <p>
+      Frias.
+    </p>
+
+    <p>
+      Ensaiadas demais.
+    </p>
+
+    <p>
+      No Mercado Negro, ninguém admite fraqueza. Ninguém confessa saudade. Ninguém diz que ainda ama alguém que talvez tenha morrido.
+    </p>
+
+    <p>
+      Spike julgou os aventureiros, recusou-se a aprofundar o assunto e entregou a Nyx uma moeda. Caso ele desejasse vender a capa, poderia entrar em contato.
+    </p>
+
+    <p>
+      Nyx achou aquilo suspeito.
+    </p>
+
+    <p>
+      Mesmo assim, guardou a moeda.
+    </p>
+
+    <p>
+      Depois disso, partiu para o templo na esperança de chegar a tempo de ajudar seus companheiros.
+    </p>
+
+    <p>
+      O restante do grupo ainda demorou um pouco entre barracas, promessas e negócios duvidosos, mas logo também seguiria o mesmo caminho.
+    </p>
+
+    <p class="quote">
+      “No Mercado Negro, até uma moeda pode ser um convite, uma armadilha ou uma despedida.”
+    </p>
+  </article>
+
+  <article class="page">
+    <div class="chapter-tag">Capítulo XIII</div>
+    <h2>Os Vândalos de Vasskar</h2>
+    <div class="ornament">✧</div>
+
+    <div class="dropcap">
+      <p>
+        Enquanto os acontecimentos se desenrolavam no Mercado Negro, Eärendil, Elyra, Kael, Field, Samael e Vladric aguardavam no Templo de Vasskar.
+      </p>
+
+      <p>
+        A noite caiu.
+      </p>
+
+      <p>
+        E com ela vieram os vândalos.
+      </p>
+
+      <p>
+        Não chegaram escondidos. Chegaram como quem acredita possuir razão suficiente para destruir.
+      </p>
+
+      <p class="quote">
+        “Aí está ela… a aberração marinha.”
+      </p>
+
+      <p>
+        A comandante dos vândalos cuspia palavras como pedras. Disse que aquele templo não pertencia a Vasskar, que Sangralia não precisava de deuses pagãos nem falsos profetas, que depois da guerra a cidade havia se erguido sem superstição.
+      </p>
+
+      <p>
+        Chamou Nymara de peixe falante.
+      </p>
+
+      <p>
+        Chamou fé de vergonha.
+      </p>
+
+      <p>
+        E então a violência começou.
+      </p>
+
+      <p>
+        Os aventureiros lutaram para proteger a sacerdotisa. Nyx e os outros chegaram a tempo de reforçar o combate, e por alguns instantes parecia que aquela seria mais uma vitória conquistada com esforço, mas sem tragédia.
+      </p>
+
+      <p>
+        Faltava apenas a comandante.
+      </p>
+
+      <p>
+        Foi quando Field ouviu a voz.
+      </p>
+    </div>
+  </article>
+</section>
+
+<section class="spread reveal full">
+  <article class="page">
+    <div class="chapter-tag">Capítulo XIV</div>
+    <h2>A Ordem da Segunda Moeda</h2>
+    <div class="ornament">✦</div>
+
+    <div class="dropcap">
+      <p>
+        Algo começou a assombrar a mente de Field.
+      </p>
+
+      <p>
+        Suas escolhas.
+      </p>
+
+      <p>
+        Seus desejos.
+      </p>
+
+      <p>
+        Suas dúvidas.
+      </p>
+
+      <p>
+        Então a entidade por trás da segunda moeda se pronunciou.
+      </p>
+
+      <p class="quote">
+        “Mate a sacerdotisa.”
+      </p>
+
+      <p>
+        Field lembrou-se do drow.
+      </p>
+
+      <p>
+        Do aviso.
+      </p>
+
+      <p>
+        Do coração explodindo diante dele.
+      </p>
+
+      <p>
+        O medo venceu antes que a razão pudesse reagir.
+      </p>
+
+      <p>
+        Ele avançou pelas costas de Nymara.
+      </p>
+
+      <p>
+        Elyra, Eärendil e Kael perceberam imediatamente e partiram para detê-lo. Gritaram. Ameaçaram. Avisaram que, se aquilo continuasse, não estariam mais tentando salvar apenas a sacerdotisa.
+      </p>
+
+      <p>
+        Estariam tentando parar Field.
+      </p>
+
+      <p>
+        Mesmo assim, ele persistiu.
+      </p>
+
+      <p>
+        A adaga tocou as costas de Nymara.
+      </p>
+
+      <p>
+        E Field, desesperado demais para entender o tamanho do próprio erro, sussurrou para a força que o manipulava:
+      </p>
+
+      <p class="quote">
+        “Eu fiz o que pediu. Agora me ajude a sair dessa.”
+      </p>
+
+      <p>
+        Correntes começaram a surgir do chão.
+      </p>
+
+      <p>
+        Não como metal comum.
+      </p>
+
+      <p>
+        Mas como sentença.
+      </p>
+    </div>
+  </article>
+</section>
+<section>
+  <article class="page">
+    <div class="chapter-tag">Imagem V</div>
+    <h2>A Adaga nas Costas da Fé</h2>
+    <div class="ornament">✧</div>
+
+    <div class="img-frame">
+      <img src="SEASON/s3p1i5.png" alt="Field ameaçando Nymara no Templo de Vasskar" />
+      <div class="caption">
+        Field coloca a adaga contra as costas de Nymara enquanto os próprios companheiros se voltam contra ele. O templo, segundos antes protegido pelos aventureiros, torna-se palco de uma traição forçada pela moeda. A fé que eles tentavam salvar agora sangra sob a mão de um aliado.
+      </div>
+    </div>
+
+    <p class="quote">
+      “Nem toda possessão toma o corpo. Algumas apenas empurram a mão.”
+    </p>
+  </article>
+</section>
+
+<section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Capítulo XV</div>
+    <h2>Sanguinaris Chama</h2>
+    <div class="ornament">✦</div>
+
+    <p>
+      Vladric se aproximou.
+    </p>
+
+    <p>
+      Ou melhor: aquilo que usava Vladric como máscara.
+    </p>
+
+    <p>
+      O hospedeiro caminhou até Field com uma calma terrível, como se tudo aquilo já estivesse previsto em alguma lógica que apenas ele compreendia.
+    </p>
+
+    <p class="quote">
+      “Vamos dar uma volta.”
+    </p>
+
+    <p>
+      Então levou Field e Nyx para Sanguinaris.
+    </p>
+
+    <p>
+      Ali, entre sangue vivo, carne consciente e um mundo que respirava como organismo, a verdade veio sem delicadeza.
+    </p>
+
+    <p>
+      O hospedeiro deixou claro para Nyx que Field deveria ser executado antes que as correntes o levassem e o transformassem em um problema ainda maior.
+    </p>
+
+    <p>
+      Nyx permaneceu frio.
+    </p>
+
+    <p>
+      Calmo.
+    </p>
+
+    <p>
+      Como alguém que já vira a morte muitas vezes.
+    </p>
+
+    <p>
+      Como alguém que entendia a dor dos que a assistem, mas não se permitia ser guiado por ela.
+    </p>
+
+    <p>
+      Então ele executou Brucisphildy.
+    </p>
+
+    <p>
+      Quando retornaram, nada voltou inteiro junto com eles.
+    </p>
+
+    <p>
+      Nem a confiança.
+    </p>
+
+    <p>
+      Nem o silêncio.
+    </p>
+
+    <p>
+      Nem o grupo.
+    </p>
+  </article>
+
+  <article class="page">
+    <div class="chapter-tag">Capítulo XVI</div>
+    <h2>A Verdade no Sangue</h2>
+    <div class="ornament">✧</div>
+
+    <div class="dropcap">
+      <p>
+        Ao voltar, Nyx já não olhava Vladric da mesma forma.
+      </p>
+
+      <p>
+        Havia dúvida.
+      </p>
+
+      <p>
+        Havia cálculo.
+      </p>
+
+      <p>
+        Havia a suspeita clara de que aquela personalidade não era apenas uma alteração passageira.
+      </p>
+
+      <p>
+        Samael confrontou Vladric imediatamente. Os outros também pressionaram. O hospedeiro tentou semear discórdia outra vez, colocando um contra o outro, distorcendo intenções e usando verdades parciais como lâminas.
+      </p>
+
+      <p>
+        Foi então que Elyra tomou uma decisão.
+      </p>
+
+      <p>
+        Pediu ao próprio pai que mostrasse a verdade.
+      </p>
+
+      <p>
+        Para forçar a revelação, obrigaram o hospedeiro a beber o sangue demoníaco de Elyra.
+      </p>
+
+      <p>
+        O efeito foi violento.
+      </p>
+
+      <p>
+        Dois seres foram separados onde antes pareciam ocupar o mesmo corpo.
+      </p>
+
+      <p>
+        Vladric.
+      </p>
+
+      <p>
+        E a presença que finalmente deixou de se esconder.
+      </p>
+
+      <p>
+        Aegon.
+      </p>
+    </div>
+  </article>
+</section>
+
+<section class="spread reveal">
+  <article class="page">
+    <div class="chapter-tag">Imagem VI</div>
+    <h2>A Separação</h2>
+    <div class="ornament">✦</div>
+
+    <div class="img-frame">
+      <img src="SEASON/s3p1i6.png" alt="A separação entre Vladric e Aegon" />
+      <div class="caption">
+        O sangue demoníaco de Elyra força a verdade a sair da carne. Vladric e Aegon se separam diante dos aventureiros, revelando que o perigo nunca esteve apenas ao redor do grupo. Durante todo esse tempo, ele caminhava entre eles usando o rosto de um aliado.
+      </div>
+    </div>
+
+    <p class="quote">
+      “Algumas possessões não escondem monstros. Elas ensinam monstros a parecerem humanos.”
+    </p>
+
+    <div class="chapter-tag">Imagem VII</div>
+    <h2>A Queda do Escolhido</h2>
+    <div class="ornament">✦</div>
+
+    <div class="img-frame">
+      <img src="SEASON/s3p1i7.png" alt="A Fé se Perdeu" />
+      <div class="caption">
+        No silêncio quebrado do templo, a morte tomou forma em um único gesto. Aegon ergueu a mão — e o mundo respondeu. A energia rubra atravessou Samael como sentença inevitável, enquanto o brilho do dragão de safira se despedaçava ao seu redor, dissolvendo-se em fragmentos de luz. Não era apenas um golpe… era o rompimento de um vínculo, o instante exato em que um paladino deixou de ser escolhido.
+      </div>
+    </div>
+
+    <p class="quote">
+      “O instante em que a morte tocou sua alma — e o dragão de safira deixou de responder ao chamado.”
+    </p>
+  </article>
+  
+
+  <article class="page">
+    <div class="chapter-tag">Capítulo XVII</div>
+    <h2>O Dedo da Morte</h2>
+    <div class="ornament">✧</div>
+
+    <div class="dropcap">
+      <p>
+        Aegon olhou para Vladric como quem observa algo inútil que finalmente perdeu sua função.
+      </p>
+
+      <p>
+        Não havia ódio em seus olhos.
+      </p>
+
+      <p>
+        Apenas conclusão.
+      </p>
+
+      <p class="quote">
+        “Você não precisa mais existir.”
+      </p>
+
+      <p>
+        Ele ergueu o dedo em direção a Vladric.
+      </p>
+
+      <p>
+        A morte respondeu.
+      </p>
+
+      <p>
+        Não veio como lâmina.
+      </p>
+
+      <p>
+        Não veio como grito.
+      </p>
+
+      <p>
+        Veio como certeza.
+      </p>
+
+      <p>
+        Samael viu o gesto antes do fim.
+      </p>
+
+      <p>
+        E correu.
+      </p>
+
+      <p>
+        Não houve tempo para estratégia.
+      </p>
+
+      <p>
+        Não houve tempo para oração.
+      </p>
+
+      <p>
+        Apenas a escolha.
+      </p>
+
+      <p>
+        O paladino se colocou entre Vladric e a morte.
+      </p>
+
+      <p>
+        Aegon o encarou por um instante, quase com pena.
+      </p>
+
+      <p class="quote">
+        “Tanta armadura… para tão pouco entendimento.”
+      </p>
+
+      <p>
+        Então a magia atingiu Samael.
+      </p>
+
+      <p>
+        O brilho de safira se apagou.
+      </p>
+
+      <p>
+        Seu corpo caiu sem ar, sem força, sem som.
+      </p>
+
+      <p>
+        Por um momento, o templo inteiro pareceu esquecer como respirar.
+      </p>
+
+      <p>
+        Samael estava morto.
+      </p>
+
+      <p>
+        Mas a alma do dragão não se apaga de uma vez.
+      </p>
+
+      <p>
+        Ele voltou.
+      </p>
+
+      <p>
+        Ergueu-se lentamente, vazio, sem a luz que antes o guiava.
+      </p>
+
+      <p>
+        Não havia mais brilho de safira.
+      </p>
+
+      <p>
+        Não havia mais certeza divina.
+      </p>
+
+      <p>
+        Apenas um paladino de pé.
+      </p>
+
+      <p>
+        Vivo.
+      </p>
+
+      <p>
+        E profundamente sozinho.
+      </p>
+
+      <p class="quote">
+        Naquele instante, Samael não perdeu apenas uma batalha. Perdeu a voz que havia escolhido seguir.
+      </p>
+    </div>
+  </article>
+</section>
 <section class="spread reveal">
   
 </section>
